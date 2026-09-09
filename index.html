@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="大森的小小空间：小游戏、随手记录和有趣发现。">
+  <meta name="theme-color" content="#f7f4e8">
+  <title>大森的小小空间</title>
+  <style>
+    :root{font-family:"Microsoft YaHei",system-ui,sans-serif;color:#244238;background:#f7f4e8;--green:#39734d;--ink:#244238;--muted:#718079;--paper:#fffdf7;--line:#dce2d5;--yellow:#f7d368;--blue:#dce9f8}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 10% 8%,#dceec9 0,transparent 30%),radial-gradient(circle at 92% 16%,#f9df9c 0,transparent 25%),#f7f4e8}
+    a{color:inherit}.wrap{width:min(1040px,calc(100% - 32px));margin:auto}.hero{padding:28px 0 32px}.topbar{display:flex;align-items:center;justify-content:space-between}.brand{font-size:12px;font-weight:800;letter-spacing:3px;color:#5f8069}.date-tag{padding:9px 14px;border:1px solid #d4ddc9;border-radius:999px;background:#ffffff8f;color:#647568;font-size:13px}
+    .hero-main{display:grid;grid-template-columns:1fr 310px;gap:42px;align-items:center;padding:64px 0 34px}.hello{display:inline-flex;gap:8px;align-items:center;margin-bottom:14px;color:#52715c;font-weight:700}.hello:before{content:"";width:26px;height:2px;background:#82a06e}.hero h1{max-width:650px;margin:0;font-size:clamp(42px,7vw,72px);line-height:1.08;letter-spacing:2px}.hero h1 em{color:var(--green);font-style:normal}.lead{max-width:560px;margin:20px 0 0;color:var(--muted);font-size:17px;line-height:1.9}.garden{position:relative;height:260px;border:1px solid #d9e1cf;border-radius:42px;background:#fffdf5bd;box-shadow:0 24px 70px #49603917;overflow:hidden}.sun{position:absolute;right:28px;top:25px;width:74px;height:74px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 16px #f7d3682b}.hill{position:absolute;left:-25px;right:-30px;bottom:-55px;height:170px;border-radius:50% 50% 0 0;background:#bbd69e}.hill.back{left:80px;right:-80px;bottom:18px;height:105px;background:#dcebc7}.snake{position:absolute;left:70px;bottom:57px;font-size:68px;filter:drop-shadow(0 8px 6px #49603922)}.fruit{position:absolute;right:70px;bottom:52px;font-size:48px;filter:drop-shadow(0 7px 5px #49603922)}
+    .quick-nav{display:grid;grid-template-columns:1fr 1fr;gap:16px}.quick-nav a{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border:1px solid var(--line);border-radius:22px;background:#fffdf7d9;text-decoration:none;font-weight:800;box-shadow:0 10px 28px #2d4a3510}.quick-nav span,.quick-nav b{white-space:nowrap}.quick-nav span{font-size:24px}.quick-nav a:hover{transform:translateY(-2px);box-shadow:0 14px 30px #2d4a3518}
+    main{padding:28px 0 72px}.section{scroll-margin-top:18px;margin-top:42px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}.kicker{color:#738575;font-size:12px;font-weight:800;letter-spacing:2px}.section h2{margin:5px 0 0;font-size:32px}.section-note{color:#829087;font-size:14px}.game-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}.card{border:1px solid var(--line);border-radius:28px;background:var(--paper);box-shadow:0 14px 38px #2b483612}.game-card{position:relative;min-height:286px;padding:30px;overflow:hidden}.game-card:after{content:"";position:absolute;width:220px;height:220px;right:-42px;bottom:-62px;border-radius:50%;background:#d9e9c6}.game-icon{position:absolute;z-index:1;right:46px;bottom:28px;font-size:96px;transform:rotate(-8deg);filter:drop-shadow(0 12px 8px #31543b22)}.pill{display:inline-block;padding:7px 12px;border-radius:999px;background:#e5efd8;color:#496b4c;font-size:12px;font-weight:800}.game-card h3{position:relative;z-index:2;margin:20px 0 10px;font-size:30px}.game-card p{position:relative;z-index:2;max-width:390px;color:var(--muted);line-height:1.8}.play{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px;margin-top:12px;padding:13px 20px;border-radius:14px;background:var(--green);color:white;text-decoration:none;font-weight:800;box-shadow:0 4px 0 #255637}.soon{display:grid;place-items:center;min-height:286px;padding:26px;text-align:center;background:#fffaf0}.soon-icon{font-size:48px}.soon h3{margin:12px 0 8px}.soon p{margin:0;color:var(--muted);line-height:1.7}
+    .talk-card{display:grid;grid-template-columns:170px 1fr;gap:28px;padding:28px}.talk-label{display:flex;min-height:150px;align-items:center;justify-content:center;border-radius:22px;background:var(--blue);font-size:64px}.talk-content{align-self:center}.talk-content time{color:#738279;font-size:13px}.talk-content h3{margin:8px 0;font-size:25px}.talk-content p{margin:0;color:var(--muted);font-size:15px;line-height:1.9}.talk-tip{margin-top:15px;padding-top:15px;border-top:1px dashed #d7ddd2;color:#52705d;font-size:13px}
+    footer{padding:28px 0 42px;border-top:1px solid #dfe3d8;color:#7a887f;font-size:13px}.footer-row{display:flex;justify-content:space-between;gap:20px}.heart{color:#c4675d}
+    @media(max-width:720px){.wrap{width:min(100% - 22px,620px)}.hero{padding-top:18px}.date-tag{display:none}.hero-main{grid-template-columns:1fr;gap:26px;padding:44px 0 24px}.hero h1{font-size:43px}.lead{font-size:15px}.garden{height:210px}.quick-nav{gap:10px}.quick-nav a{padding:16px}.quick-nav span{font-size:21px}.quick-nav b{font-size:12px}main{padding-top:12px}.section{margin-top:34px}.section h2{font-size:27px}.section-note{display:none}.game-grid{grid-template-columns:1fr}.game-card{min-height:280px;padding:24px}.game-icon{right:26px;font-size:82px}.soon{min-height:190px}.talk-card{grid-template-columns:1fr;gap:18px;padding:20px}.talk-label{min-height:120px}.footer-row{display:block;line-height:1.9}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.quick-nav a:hover{transform:none}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="topbar"><div class="brand">DASEN'S LITTLE PLACE</div><div class="date-tag">🌱 慢慢更新，开心就好</div></div>
+      <div class="hero-main">
+        <div><div class="hello">欢迎来玩</div><h1>大森的<br><em>小小空间</em></h1><p class="lead">这里收藏我做的小游戏，也记录一些想说的话。没有复杂的规则，点开喜欢的内容，随便逛逛吧。</p></div>
+        <div class="garden" aria-hidden="true"><div class="sun"></div><div class="hill back"></div><div class="hill"></div><div class="snake">🐍</div><div class="fruit">🍎</div></div>
+      </div>
+      <nav class="quick-nav" aria-label="首页板块"><a href="#games"><span>🎮 小游戏</span><b>往下看 ↓</b></a><a href="#talk"><span>☕ 闲聊</span><b>往下看 ↓</b></a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="section" id="games">
+      <div class="section-head"><div><div class="kicker">PLAY / 玩一会儿</div><h2>小游戏</h2></div><div class="section-note">当前收录 1 款游戏</div></div>
+      <div class="game-grid">
+        <article class="card game-card"><span class="pill">手机也能玩</span><h3>贪吃蛇 · 水果花园</h3><p>带着小蛇寻找苹果、樱桃和金色惊喜，挑战石头迷宫与神奇传送门。</p><a class="play" href="https://dasen-ops.github.io/fruit-garden-snake/?v=7">开始游戏 <span>→</span></a><div class="game-icon" aria-hidden="true">🐍</div></article>
+        <article class="card soon"><div><div class="soon-icon">🧩</div><h3>下一款游戏</h3><p>新的小游戏做好后，<br>会出现在这里。</p></div></article>
+      </div>
+    </section>
+    <section class="section" id="talk">
+      <div class="section-head"><div><div class="kicker">TALK / 随便聊聊</div><h2>闲聊</h2></div><div class="section-note">生活、想法和有趣发现</div></div>
+      <article class="card talk-card"><div class="talk-label" aria-hidden="true">👋</div><div class="talk-content"><time>置顶 · 欢迎</time><h3>你好，欢迎来到我的小站</h3><p>这里会放一些随手记录：最近在玩的东西、突然冒出来的想法，还有制作小游戏时遇到的趣事。内容不一定很正式，但都会是我想留下来的东西。</p><div class="talk-tip">以后每一篇闲聊都可以拥有自己的页面。</div></div></article>
+    </section>
+  </main>
+  <footer><div class="wrap footer-row"><span>大森的小小空间</span><span>用一点好奇心和<span class="heart">♥</span>慢慢搭建</span></div></footer>
+</body>
+</html>
