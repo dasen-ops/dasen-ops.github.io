@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#39734d">
+  <title>记忆方格 · Dyson的小小空间</title>
+  <link rel="stylesheet" href="../../assets/shared.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="memory-page">
+    <a class="back-link" href="../../index.html#games">← 返回游戏乐园</a>
+    <header><span class="eyebrow">专心观察 · 记忆挑战</span><h1>记忆方格</h1><p class="intro">记住发亮的格子，等它们藏起来，再把它们找出来！</p></header>
+    <div class="level-picker" aria-label="选择难度">
+      <button type="button" data-level="easy" aria-pressed="true">入门 · 3×3</button>
+      <button type="button" data-level="normal" aria-pressed="false">进阶 · 4×4</button>
+      <button type="button" data-level="hard" aria-pressed="false">挑战 · 5×5</button>
+    </div>
+    <div class="score-strip">
+      <div class="score-card"><span>这一局</span><strong id="score">0</strong></div>
+      <div class="score-card"><span>最高分</span><strong id="best-score">0</strong></div>
+      <div class="score-card"><span>用时</span><strong><span id="elapsed">0.0</span><small>秒</small></strong></div>
+    </div>
+    <section class="play-area" aria-label="记忆方格游戏">
+      <p id="game-status" class="status" role="status" aria-live="polite">准备好了吗？先试着记住 4 个格子。</p>
+      <div id="game-container" class="memory-board" aria-label="记忆棋盘"></div>
+      <div class="game-actions">
+        <button type="button" id="start-button" class="primary-button">开始挑战</button>
+        <span id="progress" class="progress">找到：0 / 4</span>
+      </div>
+    </section>
+    <p class="gentle-note">每找到一个格子 +100 分。全部找到，还能得到完成奖励！</p>
+    <footer>改编自 Meto Trajkovski 的 <a href="https://github.com/MTrajK/memory-game" target="_blank" rel="noopener noreferrer">Memory Game</a> · <a href="LICENSE">MIT 开源许可</a></footer>
+  </main>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

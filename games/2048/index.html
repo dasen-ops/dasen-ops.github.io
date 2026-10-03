@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#39734d">
+  <title>2048 · 数字合合乐 · Dyson的小小空间</title>
+  <link rel="stylesheet" href="../../assets/shared.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-page">
+    <a class="back-link" href="../../index.html#games">← 返回游戏乐园</a>
+    <header class="game-heading">
+      <div><span class="eyebrow">动动脑筋 · 数字挑战</span><h1>2048 · 数字合合乐</h1></div>
+      <button class="restart-button primary-button" type="button">重新开始</button>
+    </header>
+    <p class="intro">相同的数字碰在一起，会变成更大的数字。试着拼出 2048！</p>
+    <div class="score-strip">
+      <div class="score-card"><span>这一局</span><strong class="score-container">0</strong></div>
+      <div class="score-card"><span>最高分</span><strong class="best-container">0</strong></div>
+      <span class="play-tip">方向键移动<br>手机在棋盘上滑动</span>
+    </div>
+    <section class="play-area" aria-label="2048 游戏">
+      <div class="game-container" aria-label="数字棋盘">
+        <div class="grid-container" aria-hidden="true">
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+          <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+        </div>
+        <div class="tile-container"></div>
+        <div class="game-message" role="status" aria-live="polite">
+          <p></p>
+          <button class="retry-button primary-button" type="button">再玩一次</button>
+          <button class="keep-playing-button secondary-button" type="button">继续挑战</button>
+        </div>
+      </div>
+      <div class="direction-pad" aria-label="移动按钮">
+        <button type="button" data-direction="0" class="up" aria-label="向上移动">↑</button>
+        <button type="button" data-direction="3" class="left" aria-label="向左移动">←</button>
+        <span class="pad-center" aria-hidden="true">移动</span>
+        <button type="button" data-direction="1" class="right" aria-label="向右移动">→</button>
+        <button type="button" data-direction="2" class="down" aria-label="向下移动">↓</button>
+      </div>
+    </section>
+    <p class="gentle-note">小提示：给空格留一点位置，每一步都可以慢慢想。</p>
+    <footer>改编自 Gabriele Cirulli 的 <a href="https://github.com/gabrielecirulli/2048" target="_blank" rel="noopener noreferrer">2048</a> · <a href="LICENSE.txt">MIT 开源许可</a></footer>
+  </main>
+  <script src="js/bind_polyfill.js"></script>
+  <script src="js/classlist_polyfill.js"></script>
+  <script src="js/animframe_polyfill.js"></script>
+  <script src="js/keyboard_input_manager.js"></script>
+  <script src="js/html_actuator.js"></script>
+  <script src="js/grid.js"></script>
+  <script src="js/tile.js"></script>
+  <script src="js/local_storage_manager.js"></script>
+  <script src="js/game_manager.js"></script>
+  <script src="js/application.js"></script>
+</body>
+</html>

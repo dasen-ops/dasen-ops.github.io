@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#39734d">
+  <title>小小画室 · 创作乐园</title>
+  <link rel="stylesheet" href="../assets/shared.css">
+  <link rel="stylesheet" href="draw.css">
+  <script src="vendor/konva-10.7.0.min.js" defer></script>
+  <script src="draw.js" defer></script>
+</head>
+<body>
+  <main class="drawing-app">
+    <header class="drawing-header">
+      <div>
+        <a class="back-link" href="../index.html#creative">← 回到乐园</a>
+        <h1>小小画室 <span aria-hidden="true">✿</span></h1>
+        <p>挑个颜色，用手指或鼠标画出你的想法。</p>
+      </div>
+      <button id="save-png" class="action-button primary" type="button">↓ 保存图片</button>
+    </header>
+
+    <section class="studio" aria-label="画画工具和画布">
+      <div class="toolbar">
+        <div class="tools" role="group" aria-label="选择工具">
+          <button class="tool-button selected" data-tool="brush" aria-pressed="true" type="button"><span aria-hidden="true">✎</span> 画笔</button>
+          <button class="tool-button" data-tool="eraser" aria-pressed="false" type="button"><span aria-hidden="true">▱</span> 橡皮</button>
+          <button class="tool-button" data-tool="move" aria-pressed="false" type="button"><span aria-hidden="true">✥</span> 移动贴纸</button>
+        </div>
+        <div class="edit-tools" role="group" aria-label="修改画作">
+          <button id="undo" class="action-button" type="button" disabled>↶ 撤销</button>
+          <button id="redo" class="action-button" type="button" disabled>↷ 重做</button>
+          <button id="clear" class="action-button" type="button">清空</button>
+        </div>
+      </div>
+
+      <div class="paint-options">
+        <div class="palette" role="group" aria-label="画笔颜色">
+          <button class="swatch selected" data-color="#39734d" style="--swatch:#39734d" aria-label="绿色" aria-pressed="true" type="button"></button>
+          <button class="swatch" data-color="#244238" style="--swatch:#244238" aria-label="深绿色" aria-pressed="false" type="button"></button>
+          <button class="swatch" data-color="#ed795b" style="--swatch:#ed795b" aria-label="橙色" aria-pressed="false" type="button"></button>
+          <button class="swatch" data-color="#e9ba45" style="--swatch:#e9ba45" aria-label="黄色" aria-pressed="false" type="button"></button>
+          <button class="swatch" data-color="#5d9dc2" style="--swatch:#5d9dc2" aria-label="蓝色" aria-pressed="false" type="button"></button>
+          <button class="swatch" data-color="#9e79b5" style="--swatch:#9e79b5" aria-label="紫色" aria-pressed="false" type="button"></button>
+          <button class="swatch" data-color="#dc7495" style="--swatch:#dc7495" aria-label="粉色" aria-pressed="false" type="button"></button>
+          <button class="swatch" data-color="#8d624b" style="--swatch:#8d624b" aria-label="棕色" aria-pressed="false" type="button"></button>
+        </div>
+        <div class="sizes" role="group" aria-label="画笔粗细">
+          <span class="option-label">粗细</span>
+          <button data-size="4" aria-pressed="false" aria-label="细画笔" type="button"><i style="--dot:4px"></i><span>细</span></button>
+          <button class="selected" data-size="10" aria-pressed="true" aria-label="中画笔" type="button"><i style="--dot:10px"></i><span>中</span></button>
+          <button data-size="22" aria-pressed="false" aria-label="粗画笔" type="button"><i style="--dot:18px"></i><span>粗</span></button>
+        </div>
+      </div>
+
+      <div class="canvas-frame">
+        <div id="drawing-canvas" role="img" aria-label="画布：用画笔画画，切换移动贴纸后可拖动贴纸"></div>
+        <span class="paper-label" aria-hidden="true">我的小小世界</span>
+      </div>
+
+      <div class="sticker-tray">
+        <span class="option-label">加张小贴纸</span>
+        <div class="sticker-buttons" role="group" aria-label="添加贴纸">
+          <button data-sticker="star" type="button"><span aria-hidden="true" class="sticker-star">★</span> 星星</button>
+          <button data-sticker="sun" type="button"><span aria-hidden="true" class="sticker-sun">☀</span> 太阳</button>
+          <button data-sticker="flower" type="button"><span aria-hidden="true" class="sticker-flower">✿</span> 小花</button>
+          <button data-sticker="heart" type="button"><span aria-hidden="true" class="sticker-heart">♥</span> 爱心</button>
+        </div>
+        <span class="sticker-hint">添加后可以拖到喜欢的位置</span>
+      </div>
+    </section>
+
+    <footer class="drawing-footer">
+      <p id="feedback" role="status" aria-live="polite">画布准备好了，开始画吧！</p>
+      <p id="draft-status">草稿只保存在这台设备的浏览器里，不会上传。</p>
+    </footer>
+    <noscript><p class="load-message">请在浏览器里打开并允许 JavaScript，就能开始画画。</p></noscript>
+  </main>
+</body>
+</html>

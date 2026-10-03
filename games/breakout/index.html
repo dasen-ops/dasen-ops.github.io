@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f4e8">
+  <meta name="description" content="移动挡板，接住小球，打碎彩色砖块。电脑和手机都能玩的中文打砖块。">
+  <title>彩虹打砖块 · Dyson的小小空间</title>
+  <link rel="stylesheet" href="../../assets/shared.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="breakout-page">
+    <header class="game-heading">
+      <a class="back-link" href="../../index.html#games">← 回到小小空间</a>
+      <div class="heading-row"><div><p class="eyebrow">接住好运 · 打开彩虹</p><h1>彩虹打砖块 <span aria-hidden="true">🧱</span></h1></div><button id="sound-button" class="sound-button" type="button" aria-pressed="false">♪ 声音开</button></div>
+      <p class="intro">守住小球，击碎彩色砖墙。接住掉落的礼物，解锁神奇道具！</p>
+    </header>
+    <section class="game-card" aria-label="彩虹打砖块游戏">
+      <div class="scoreboard">
+        <div><span>得分</span><strong id="score">0</strong></div>
+        <div><span>生命</span><strong id="lives">♥ ♥ ♥</strong></div>
+        <div><span>关卡</span><strong id="level">1 / 5</strong></div>
+        <div><span>最好成绩</span><strong id="best">0</strong></div>
+      </div>
+      <div class="stage-shell">
+        <div id="game-stage" class="game-stage" tabindex="0" role="application" aria-label="打砖块舞台。拖动手指或移动鼠标控制挡板，方向键也能移动，空格发球。"></div>
+        <div id="stage-message" class="stage-message"><div><span id="message-icon" aria-hidden="true">🌈</span><h2 id="message-title">准备接住每一颗小球</h2><p id="message-description">点下方「开始游戏」，彩虹挑战就开始啦。</p></div></div>
+      </div>
+      <div class="game-controls">
+        <button id="action-button" class="primary-button" type="button" disabled>正在准备…</button>
+        <button id="pause-button" class="secondary-button" type="button" disabled>暂停</button>
+        <button id="restart-button" class="secondary-button" type="button" disabled>重玩</button>
+      </div>
+      <p id="game-status" class="game-status" role="status" aria-live="polite">正在准备彩虹砖墙…</p>
+    </section>
+    <div class="play-tips"><p><strong>怎么玩</strong>　手机：在舞台左右拖动手指。电脑：移动鼠标或按 ← →。接住球，再把它送回砖墙！</p><p class="gift-guide"><span>🏓 挡板变宽</span><span>🔱 多颗小球</span><span>🧲 吸住小球</span><span>⚡ 激光冲击</span><span>🔥 穿透砖块</span><span>🐌 小球减速</span><span>❤️ 多一次机会</span></p><p class="small-note">红色砖块需要打两次，灰色砖块会反弹小球。5 关全部完成后，将开启更快的一轮。</p></div>
+    <footer class="game-footer">最高分保存在这台设备上。<a href="SOURCE.md">开源来源</a></footer>
+  </main>
+  <script src="vendor/littlejs.min.js"></script>
+  <script src="vendor/textureGenerator.js"></script>
+  <script src="vendor/gameFx.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>

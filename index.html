@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="Dyson的小小空间：小游戏、随手记录和有趣发现。">
+  <meta name="description" content="Dyson的小小空间：水果贪吃蛇、2048、记忆方格、打砖块，画板、作品相册和随手记录。">
   <meta name="theme-color" content="#f7f4e8">
   <title>Dyson的小小空间</title>
   <style>
@@ -18,31 +18,51 @@
     @media(max-width:720px){.wrap{width:min(100% - 22px,620px)}.hero{padding-top:18px}.date-tag{display:none}.hero-main{grid-template-columns:1fr;gap:26px;padding:44px 0 24px}.hero h1{font-size:43px}.lead{font-size:15px}.garden{height:210px}.quick-nav{gap:10px}.quick-nav a{padding:16px}.quick-nav span{font-size:21px}.quick-nav b{font-size:12px}main{padding-top:12px}.section{margin-top:34px}.section h2{font-size:27px}.section-note{display:none}.game-grid{grid-template-columns:1fr}.game-card{min-height:280px;padding:24px}.game-icon{right:26px;font-size:82px}.soon{min-height:190px}.talk-card{grid-template-columns:1fr;gap:18px;padding:20px}.talk-label{min-height:120px}.footer-row{display:block;line-height:1.9}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.quick-nav a:hover{transform:none}}
   </style>
+  <link rel="stylesheet" href="assets/home.css">
+  <link rel="stylesheet" href="assets/vendor/photoswipe/photoswipe.css">
 </head>
 <body>
   <header class="hero">
     <div class="wrap">
       <div class="topbar"><div class="brand">DYSON'S LITTLE PLACE</div><div class="date-tag">🌱 慢慢更新，开心就好</div></div>
       <div class="hero-main">
-        <div><div class="hello">欢迎来玩</div><h1>Dyson的<br><em>小小空间</em></h1><p class="lead">这里收藏我做的小游戏，也记录一些想说的话。没有复杂的规则，点开喜欢的内容，随便逛逛吧。</p></div>
+        <div><div class="hello">欢迎来玩</div><h1>Dyson的<br><em>小小空间</em></h1><p class="lead">玩一局小游戏，画一个小世界，再留下一点有趣的发现。点开喜欢的内容，随便逛逛吧。</p></div>
         <div class="garden" aria-hidden="true"><div class="sun"></div><div class="hill back"></div><div class="hill"></div><div class="snake">🐍</div><div class="fruit">🍎</div></div>
       </div>
-      <nav class="quick-nav" aria-label="首页板块"><a href="#games"><span>🎮 小游戏</span><b>往下看 ↓</b></a><a href="#talk"><span>☕ 闲聊</span><b>往下看 ↓</b></a></nav>
+      <nav class="quick-nav" aria-label="首页板块"><a href="#games"><span>🎮 小游戏</span><b>↓</b></a><a href="#creative"><span>🎨 创作角</span><b>↓</b></a><a href="#album"><span>📷 小相册</span><b>↓</b></a><a href="#talk"><span>☕ 闲聊</span><b>↓</b></a></nav>
     </div>
   </header>
   <main class="wrap">
     <section class="section" id="games">
-      <div class="section-head"><div><div class="kicker">PLAY / 玩一会儿</div><h2>小游戏</h2></div><div class="section-note">当前收录 1 款游戏</div></div>
+      <div class="section-head"><div><div class="kicker">PLAY / 玩一会儿</div><h2>小游戏</h2></div><div class="section-note">4 款小游戏 · 手机也能玩</div></div>
       <div class="game-grid">
-        <article class="card game-card"><span class="pill">手机也能玩</span><h3>贪吃蛇 · 水果花园</h3><p>带着小蛇寻找苹果、樱桃和金色惊喜，挑战石头迷宫与神奇传送门。</p><a class="play" href="https://dasen-ops.github.io/fruit-garden-snake/?v=7">开始游戏 <span>→</span></a><div class="game-icon" aria-hidden="true">🐍</div></article>
-        <article class="card soon"><div><div class="soon-icon">🧩</div><h3>下一款游戏</h3><p>新的小游戏做好后，<br>会出现在这里。</p></div></article>
+        <article class="card game-card"><div class="game-copy"><span class="pill">水果冒险</span><h3>贪吃蛇 · 水果花园</h3><p>寻找苹果和金色惊喜，挑战石头迷宫与神奇传送门。</p><a class="play" href="https://dyson-snake-rank-d7emszy6bdd3b85-1488624432.tcloudbaseapp.com/">开始游戏 <span>→</span></a></div><div class="game-art snake-art" aria-hidden="true">🐍</div></article>
+        <article class="card game-card game-2048"><div class="game-copy"><span class="pill">数字益智</span><h3>2048 · 数字合合乐</h3><p>滑一滑，把相同数字合起来。看看你能拼到多大！</p><a class="play" href="games/2048/">开始游戏 <span>→</span></a></div><div class="game-art number-art" aria-hidden="true"><i>2</i><i>4</i><i>8</i><i>16</i></div></article>
+        <article class="card game-card game-memory"><div class="game-copy"><span class="pill">记忆挑战</span><h3>记忆方格</h3><p>记住亮起来的位置，再把它们找出来。眼力和记忆一起上场！</p><a class="play" href="games/memory/">开始游戏 <span>→</span></a></div><div class="game-art memory-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="card game-card game-breakout"><div class="game-copy"><span class="pill">反应挑战</span><h3>打砖块</h3><p>接住弹跳的小球，把彩色砖块一块块打掉，挑战下一关！</p><a class="play" href="games/breakout/">开始游戏 <span>→</span></a></div><div class="game-art brick-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      </div>
+    </section>
+    <section class="section" id="creative">
+      <div class="section-head"><div><div class="kicker">CREATE / 动手画一画</div><h2>创作角</h2></div><div class="section-note">给脑袋里的点子涂上颜色</div></div>
+      <div class="module-grid"><article class="card module-card"><div class="module-icon" aria-hidden="true">🎨</div><div><h3>我的小画板</h3><p>拿起画笔，选喜欢的颜色，加上可爱贴纸。画好了，可以保存成图片。</p><a class="play" href="draw/">去画画 <span>→</span></a></div></article><article class="card module-card"><div class="module-icon" aria-hidden="true" style="background:#dce9f8">🌱</div><div><h3>今天的小灵感</h3><p>画一条住在水果花园里的小蛇，或者给打砖块设计一个新关卡。</p><div class="little-note">想画什么，都可以。</div></div></article></div>
+    </section>
+    <section class="section" id="album">
+      <div class="section-head"><div><div class="kicker">ALBUM / 留住小瞬间</div><h2>小相册</h2></div><a class="section-link" href="album/">打开相册 →</a></div>
+      <div class="photo-grid" id="home-gallery">
+        <figure class="photo-card"><a href="album/images/snake.png" data-pswp-width="960" data-pswp-height="720"><img src="album/images/snake.png" width="960" height="720" alt="水果贪吃蛇的绿色花园游戏画面" loading="lazy"><figcaption>水果花园</figcaption></a></figure>
+        <figure class="photo-card"><a href="album/images/2048.png" data-pswp-width="960" data-pswp-height="720"><img src="album/images/2048.png" width="960" height="720" alt="2048 数字合合乐游戏画面" loading="lazy"><figcaption>数字合合乐</figcaption></a></figure>
+        <figure class="photo-card"><a href="album/images/memory.png" data-pswp-width="960" data-pswp-height="720"><img src="album/images/memory.png" width="960" height="720" alt="记忆方格中亮起的方格" loading="lazy"><figcaption>亮起来的方格</figcaption></a></figure>
+        <figure class="photo-card"><a href="album/images/breakout.png" data-pswp-width="960" data-pswp-height="720"><img src="album/images/breakout.png" width="960" height="720" alt="彩色砖块和弹球的游戏画面" loading="lazy"><figcaption>彩色砖块</figcaption></a></figure>
       </div>
     </section>
     <section class="section" id="talk">
       <div class="section-head"><div><div class="kicker">TALK / 随便聊聊</div><h2>闲聊</h2></div><div class="section-note">生活、想法和有趣发现</div></div>
-      <article class="card talk-card"><div class="talk-label" aria-hidden="true">👋</div><div class="talk-content"><time>置顶 · 欢迎</time><h3>你好，欢迎来到我的小站</h3><p>这里会放一些随手记录：最近在玩的东西、突然冒出来的想法，还有制作小游戏时遇到的趣事。内容不一定很正式，但都会是我想留下来的东西。</p><div class="talk-tip">以后每一篇闲聊都可以拥有自己的页面。</div></div></article>
+      <div class="talk-grid"><article class="card talk-card"><div class="talk-content"><time>置顶 · 欢迎</time><h3>你好，欢迎来到我的小站</h3><p>小游戏、小画作，还有突然冒出来的想法，都能在这里找到一个小角落。</p><a class="section-link talk-tip" href="articles/welcome.html">读一读 →</a></div></article><article class="card talk-card"><div class="talk-content"><time>2026.10.04 · 小站更新</time><h3>游乐园多了三位新朋友</h3><p>数字合合乐、记忆方格和打砖块来了。这次还给喜欢画画的你准备了一块画板。</p><a class="section-link talk-tip" href="articles/new-friends.html">看看有什么新鲜事 →</a></div></article></div>
     </section>
   </main>
-  <footer><div class="wrap footer-row"><span>Dyson的小小空间</span><span>用一点好奇心和<span class="heart">♥</span>慢慢搭建</span></div></footer>
+  <footer><div class="wrap footer-row site-foot"><span>Dyson的小小空间<a href="credits.html">开源伙伴</a></span><span>用一点好奇心和<span class="heart">♥</span>慢慢搭建</span></div></footer>
+  <script src="assets/vendor/photoswipe/photoswipe.umd.min.js"></script>
+  <script src="assets/vendor/photoswipe/photoswipe-lightbox.umd.min.js"></script>
+  <script src="assets/gallery.js"></script>
 </body>
 </html>
