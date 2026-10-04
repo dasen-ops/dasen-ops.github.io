@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f6ee">
+  <title>四子棋 · Dyson的小小空间</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/shared.css">
+  <link rel="stylesheet" href="../../assets/site-nav.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../../assets/site-core.js" data-game="connect4" defer></script>
+  <script src="../../assets/site-nav.js" defer></script>
+  <script src="rules.js" defer></script>
+  <script src="search.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body data-site-section="games">
+  <main class="connect4-page">
+    <a class="back-link" href="../../index.html#games">← 返回首页</a>
+    <header class="page-head">
+      <span class="eyebrow">想一想下一步</span>
+      <h1>四子棋 <span aria-hidden="true">●</span></h1>
+      <p>棋子会落到这一列的最底下。横着、竖着、斜着，先连成四枚就赢！</p>
+    </header>
+    <section class="game-controls" aria-label="对局设置">
+      <div class="mode-picker" aria-label="选择对手">
+        <button type="button" class="btn mode-button" data-mode="ai" aria-pressed="true">和电脑下</button>
+        <button type="button" class="btn mode-button" data-mode="pvp" aria-pressed="false">两人轮流下</button>
+      </div>
+      <div class="restart-controls">
+        <label class="difficulty-label" for="difficulty">电脑水平</label>
+        <select id="difficulty" aria-label="电脑水平">
+          <option value="easy">轻松</option>
+          <option value="medium">认真</option>
+          <option value="hard">挑战</option>
+        </select>
+        <button type="button" class="btn primary" id="new-game">新的一局</button>
+      </div>
+    </section>
+    <section class="play-area" aria-label="四子棋游戏">
+      <div class="turn-strip">
+        <span id="turn-disc" class="turn-disc red" aria-hidden="true"></span>
+        <p id="game-status" role="status" aria-live="polite">轮到你了，红棋先走。</p>
+      </div>
+      <div class="board-stage">
+        <div id="board" class="board-columns" role="group" aria-label="四子棋棋盘，选择一列落子" aria-describedby="keyboard-help"></div>
+      </div>
+      <p class="keyboard-help" id="keyboard-help">点一列落子 · 键盘用 ← → 选列，回车或空格落子</p>
+    </section>
+    <div class="score-strip" aria-label="本机对局记录">
+      <div><span>战胜电脑</span><strong id="ai-wins">0</strong></div>
+      <div><span>双人红棋赢</span><strong id="red-wins">0</strong></div>
+      <div><span>双人黄棋赢</span><strong id="yellow-wins">0</strong></div>
+    </div>
+    <p id="storage-note" class="storage-note">赢局数保存在这个浏览器里。切换对手或电脑水平，会开始新的一局。</p>
+    <footer class="page-footer">棋盘规则和电脑搜索改编自 <a href="https://github.com/KilledByAPixel/LittleJSArcade" target="_blank" rel="noopener noreferrer">LittleJS Arcade</a> · <a href="LICENSE">MIT 开源许可</a></footer>
+  </main>
+</body>
+</html>

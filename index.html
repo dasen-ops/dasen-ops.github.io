@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="description" content="Dyson的小小空间：水果贪吃蛇、2048、记忆方格、打砖块，画板、作品相册和随手记录。">
+  <meta name="description" content="Dyson的小小空间：六款小游戏、积木路线、画板、像素画与节奏创作，还有自己的作品相册和随手记录。">
   <meta name="theme-color" content="#f6f6ee">
   <title>Dyson的小小空间</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <link rel="stylesheet" href="assets/home.css">
   <link rel="stylesheet" href="assets/vendor/photoswipe/photoswipe.css">
@@ -38,7 +39,7 @@
     </section>
 
     <section class="section" id="games">
-      <div class="section-head"><div><span class="kicker">随时来一局</span><h2>小游戏</h2></div><div class="section-meta"><span id="game-count" aria-live="polite">4 款小游戏</span><span class="section-note">点 ☆，收好喜欢的游戏</span></div></div>
+      <div class="section-head"><div><span class="kicker">随时来一局</span><h2>小游戏</h2></div><div class="section-meta"><span id="game-count" aria-live="polite">6 款小游戏</span><span class="section-note">点 ☆，收好喜欢的游戏</span></div></div>
       <div id="catalog-tools" hidden>
         <div class="catalog-controls">
           <label class="game-search-label" for="game-search"><span class="visually-hidden">找个游戏</span><span class="search-symbol" aria-hidden="true">⌕</span><input id="game-search" type="search" placeholder="找个游戏，比如“记忆”" maxlength="80" autocomplete="off"></label>
@@ -52,12 +53,19 @@
         <article class="card game-card game-2048" data-game="2048"><div class="game-copy"><span class="pill">2048 · 数字益智</span><h3>数字合合乐</h3><p>滑一滑，合并数字，拼出新的纪录。</p><a class="play" href="games/2048/index.html">开始游戏 <span>→</span></a></div><div class="game-art number-art" aria-hidden="true"><i>2</i><i>4</i><i>8</i><i>16</i></div></article>
         <article class="card game-card game-memory" data-game="memory"><div class="game-copy"><span class="pill">记忆挑战</span><h3>记忆方格</h3><p>记住亮格，再把它们一个个找出来。</p><a class="play" href="games/memory/index.html">开始游戏 <span>→</span></a></div><div class="game-art memory-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
         <article class="card game-card game-breakout" data-game="breakout"><div class="game-copy"><span class="pill">反应挑战</span><h3>打砖块</h3><p>接住小球，打掉彩色砖块，闯下一关。</p><a class="play" href="games/breakout/index.html">开始游戏 <span>→</span></a></div><div class="game-art brick-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="card game-card game-sokoban" data-game="sokoban"><div class="game-copy"><span class="pill">动脑解谜 · 新</span><h3>推箱子</h3><p>把箱子推到圆点上，七个小关卡等你来。</p><a class="play" href="games/sokoban/index.html">去推箱子 <span>→</span></a></div><div class="game-art sokoban-art" aria-hidden="true"><i></i><i class="box"></i><i></i><i class="target"></i><i class="player">✦</i><i></i><i></i><i class="box"></i><i class="target"></i></div></article>
+        <article class="card game-card game-connect4" data-game="connect4"><div class="game-copy"><span class="pill">棋盘挑战 · 新</span><h3>四子棋</h3><p>先连成四枚就赢，可以和电脑或朋友下。</p><a class="play" href="games/connect4/index.html">去下棋 <span>→</span></a></div><div class="game-art connect-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
       </div>
       <div id="game-empty" class="game-empty card" hidden><p></p><button id="reset-games" type="button">看看全部游戏</button></div>
     </section>
     <section class="section" id="creative">
       <div class="section-head"><div><span class="kicker">把点子变成作品</span><h2>创作角</h2></div><span class="section-note">今天，想做点什么？</span></div>
-      <div class="module-grid"><article class="card module-card"><div class="module-icon" aria-hidden="true">🎨</div><div><h3>我的小画板</h3><p>选颜色、画线条，贴上可爱的贴纸。画好了，收进你的小相册。</p><a class="play" href="draw/index.html">去画画 <span>→</span></a></div></article><article class="card module-card"><div class="module-icon blocks-icon" aria-hidden="true">🧩</div><div><h3>积木小路线</h3><p>拼好方向和重复积木，让小蛇照着走。三条小路线，等你来挑战。</p><a class="play" href="create/route/index.html">去拼积木 <span>→</span></a></div></article></div>
+      <div class="module-grid">
+        <article class="card module-card"><div class="module-icon" aria-hidden="true">🎨</div><div><h3>我的小画板</h3><p>选颜色、画线条，贴上可爱的贴纸。画好了，收进你的小相册。</p><a class="play" href="draw/index.html">去画画 <span>→</span></a></div></article>
+        <article class="card module-card"><div class="module-icon blocks-icon" aria-hidden="true">🧩</div><div><h3>积木小路线</h3><p>拼好方向和重复积木，让小蛇照着走。三条小路线，等你来挑战。</p><a class="play" href="create/route/index.html">去拼积木 <span>→</span></a></div></article>
+        <article class="card module-card"><div class="module-icon music-icon" aria-hidden="true">♫</div><div><h3>小小节奏机</h3><p>点亮格子，让鼓、沙沙铃和小星音一起演奏你自己的节奏。</p><a class="play" href="create/music/index.html">去玩音乐 <span>→</span></a></div></article>
+        <article class="card module-card"><div class="module-icon pixel-icon" aria-hidden="true">▦</div><div><h3>像素小画家</h3><p>一格一格涂上颜色，把小图案变成作品，还能收进相册。</p><a class="play" href="create/pixel/index.html">去画像素画 <span>→</span></a></div></article>
+      </div>
     </section>
     <div class="discovery-grid">
     <section class="section" id="album">

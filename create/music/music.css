@@ -1,0 +1,37 @@
+.music-shell{max-width:1000px}
+.music-panel{padding:26px;background:#fff}
+.playbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
+.play-actions{display:flex;gap:10px}
+.play-actions .btn{min-width:106px}
+.beat-display{display:flex;align-items:center;gap:9px;min-width:102px;color:var(--muted);font-size:14px;font-weight:700}
+.beat-dot{width:10px;height:10px;border-radius:50%;background:#dfe5d8}
+[data-state="playing"] .beat-dot{background:#d8a548}
+.music-tracks{display:grid;gap:14px}
+.music-track{display:grid;grid-template-columns:128px minmax(0,1fr);align-items:center;gap:16px}
+.track-label{display:flex;align-items:center;gap:10px;min-width:0}
+.track-icon{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:14px;background:var(--track-soft);color:var(--track-color);font-size:23px;font-weight:700}
+.track-label h2{font-size:15px;margin:0}
+.track-label p{margin:3px 0 0;color:var(--muted);font-size:12px;line-height:1.5}
+.track-steps{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px}
+.beat-button{display:flex;align-items:center;justify-content:center;gap:7px;position:relative;min-width:44px;min-height:58px;padding:8px 4px;border:1px solid #dfe5d8;border-radius:12px;background:#f5f6f0;color:#637568;font-size:13px;font-weight:700;box-shadow:0 2px 3px #263f3506;transition:background .12s,border-color .12s}
+.beat-mark{width:9px;height:9px;border:2px solid currentColor;border-radius:50%}
+.beat-button[aria-pressed="true"]{background:var(--track-soft);border-color:var(--track-color);color:var(--track-color)}
+.beat-button[aria-pressed="true"] .beat-mark{background:currentColor}
+.beat-button.is-current:after{content:"";position:absolute;inset:-4px;border:2px solid #a47d2f;border-radius:15px;pointer-events:none}
+.grid-tip{margin:20px 0 0;color:var(--muted);font-size:13px}
+.music-controls{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:20px 0 6px;margin-top:18px;border-top:1px solid var(--line)}
+.range-control{display:flex;flex-direction:column;min-width:0;color:var(--ink);font-size:14px;font-weight:700}
+.range-control span{display:flex;align-items:baseline;gap:8px}
+.range-control output{color:var(--green);min-width:28px;font-variant-numeric:tabular-nums}
+.range-control small{font-size:12px;color:var(--muted);font-weight:400}
+.range-control input{width:100%;height:44px;margin:2px 0 0;accent-color:var(--green);cursor:pointer;touch-action:pan-y}
+.music-status{min-height:27px;margin:12px 0 0;color:var(--green);font-size:14px}
+.music-tools{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-top:24px}
+.preset-group h2{margin:0 0 12px;font-size:16px}
+.preset-buttons,.file-actions{display:flex;gap:8px;flex-wrap:wrap}
+.music-tools .btn{font-size:13px;padding:10px 13px;background:#fff}
+.file-actions{justify-content:flex-end}
+.draft-status{color:var(--muted);font-size:12px;margin:18px 0 0}
+@media(max-width:800px){.music-track{grid-template-columns:104px minmax(0,1fr);gap:12px}.track-steps{gap:6px}.beat-button{min-height:52px;gap:5px}.track-label{gap:7px}.track-icon{width:34px;height:38px;font-size:21px}.track-label h2{font-size:14px}.music-tools{align-items:flex-start;flex-direction:column;gap:16px}.file-actions{justify-content:flex-start}}
+@media(max-width:600px){.music-panel{padding:18px 14px}.playbar{gap:9px;margin-bottom:22px}.play-actions{gap:8px}.play-actions .btn{min-width:86px;padding:10px 12px}.beat-display{min-width:80px;font-size:12px;gap:6px}.music-tracks{gap:23px}.music-track{grid-template-columns:1fr;gap:11px}.track-label{gap:9px}.track-label p{display:none}.track-icon{width:30px;height:30px;border-radius:10px;font-size:19px}.track-label h2{font-size:14px}.track-steps{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.beat-button{min-height:48px;gap:10px}.grid-tip{font-size:12px;line-height:1.75}.music-controls{gap:18px;margin-top:16px;padding-top:16px}.range-control{font-size:13px}.range-control span{gap:5px;flex-wrap:wrap}.range-control small{font-size:11px}.music-status{font-size:13px;line-height:1.8}.music-tools{margin-top:22px}.music-tools .btn{padding:10px 12px}.draft-status{line-height:1.85}}
+@media(prefers-reduced-motion:reduce){.beat-button{transition:none}}

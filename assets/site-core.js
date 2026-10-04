@@ -7,7 +7,9 @@
     { id: 'snake', name: '水果贪吃蛇', icon: '🐍', href: 'https://dyson-snake-rank-d7emszy6bdd3b85-1488624432.tcloudbaseapp.com/', keywords: '贪吃蛇 水果 花园 冒险 snake' },
     { id: '2048', name: '数字合合乐', icon: '🔢', href: 'games/2048/index.html', keywords: '2048 数字 合成 益智' },
     { id: 'memory', name: '记忆方格', icon: '🟦', href: 'games/memory/index.html', keywords: '记忆 方格 眼力 益智 memory' },
-    { id: 'breakout', name: '打砖块', icon: '🧱', href: 'games/breakout/index.html', keywords: '打砖块 弹球 反应 breakout' }
+    { id: 'breakout', name: '打砖块', icon: '🧱', href: 'games/breakout/index.html', keywords: '打砖块 弹球 反应 breakout' },
+    { id: 'sokoban', name: '推箱子', icon: '📦', href: 'games/sokoban/index.html', keywords: '推箱子 箱子 解谜 关卡 sokoban' },
+    { id: 'connect4', name: '四子棋', icon: '🔴', href: 'games/connect4/index.html', keywords: '四子棋 棋盘 双人 电脑 连线 connect4' }
   ];
   const key = 'dyson-site-v1';
   const validId = id => games.some(game => game.id === id);
@@ -57,6 +59,26 @@
     if (id === 'memory') return Math.max(...['easy', 'normal', 'hard'].map(level => scoreAt('xingya.memory.best.' + level)));
     return null;
   };
+  const gameRecord = id => {
+    if (id === 'snake') return '在线花园 · 含排行榜';
+    if (id === 'sokoban') {
+      try {
+        const saved = JSON.parse(localStorage.getItem('dyson-sokoban-v1'));
+        const completed = saved?.version === 1 && saved.completed && typeof saved.completed === 'object' ? saved.completed : {};
+        const count = Object.keys(completed).filter(level => /^[1-7]$/.test(level) && Number.isInteger(completed[level]?.moves) && completed[level].moves >= 0).length;
+        return count ? '已完成：' + count + ' / 7 关' : '';
+      } catch { return ''; }
+    }
+    if (id === 'connect4') {
+      try {
+        const saved = JSON.parse(localStorage.getItem('dyson-connect4-v1'));
+        const wins = saved && saved.version === 1 ? Number(saved.wins?.ai) : 0;
+        return Number.isSafeInteger(wins) && wins > 0 ? '已战胜电脑：' + wins + ' 局' : '';
+      } catch { return ''; }
+    }
+    const score = bestScore(id);
+    return score > 0 ? '本机最高分：' + score : '';
+  };
   // Some mobile browsers suppress the next compatibility click after canvas dragging.
   const onActivate = (button, callback) => {
     let start = null, lastTouch = -Infinity;
@@ -81,7 +103,7 @@
   };
   window.DysonSite = Object.freeze({
     currentGame, games: Object.freeze(games.map(game => Object.freeze(game))), rootURL,
-    isFavorite, toggleFavorite, visit, bestScore, onActivate,
+    isFavorite, toggleFavorite, visit, bestScore, gameRecord, onActivate,
     recent: () => state.recent.map(item => ({ ...item }))
   });
   window.addEventListener('storage', event => {

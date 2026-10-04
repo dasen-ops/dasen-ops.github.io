@@ -51,8 +51,7 @@
       const matches = (game.name + ' ' + game.keywords + ' ' + card.querySelector('p').textContent).toLocaleLowerCase().includes(query);
       card.hidden = !matches || (filter === 'favorites' && !favorite);
       if (!card.hidden) visible++;
-      const score = site.bestScore(id);
-      card.querySelector('[data-score]').textContent = score === null ? '在线花园 · 含排行榜' : score > 0 ? '本机最高分：' + score : '';
+      card.querySelector('[data-score]').textContent = site.gameRecord(id);
     }
     filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.gameFilter === filter)));
     count.textContent = visible + ' 款小游戏';

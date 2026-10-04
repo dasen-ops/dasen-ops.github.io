@@ -82,7 +82,7 @@ h1 em { color: var(--green); font-style: normal; }
 .recent-games>span { font-size: 11px; color: #7b8973; }
 .recent-games>div { display: flex; flex-wrap: wrap; gap: 7px; }
 .recent-games a { display: inline-flex; align-items: center; min-height: 44px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: #fffefa; text-decoration: none; color: var(--green); font-size: 12px; font-weight: 700; }
-.game-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
+.game-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
 .card { border: 1px solid var(--line); border-radius: 22px; background: var(--paper); }
 .game-card { position: relative; display: flex; flex-direction: column; min-width: 0; overflow: hidden; padding: 10px; box-shadow: 0 5px 20px #315d4905; transition: box-shadow .15s, border-color .15s; }
 .game-card:hover { border-color: #c3d0b9; box-shadow: 0 8px 26px #315d4910; }
@@ -104,6 +104,15 @@ h1 em { color: var(--green); font-style: normal; }
 .brick-art i:nth-child(3n) { background: #c38c93; }
 .brick-art:before { content: ''; position: absolute; width: 11px; height: 11px; background: #e4bd60; border-radius: 50%; bottom: 35px; left: calc(50% + 13px); }
 .brick-art:after { content: ''; position: absolute; width: 55px; height: 7px; background: #6f9564; border-radius: 5px; bottom: 22px; left: calc(50% - 28px); }
+.sokoban-art { grid-template-columns: repeat(3,24px); gap: 5px; background: #e8eddd; }
+.sokoban-art i { display: grid; place-items: center; height: 24px; border-radius: 5px; background: #dae4cc; font-style: normal; }
+.sokoban-art .box { background: #eacb7c; border: 2px solid #c09b51; }
+.sokoban-art .target { border-radius: 50%; background: #c87989; box-shadow: inset 0 0 0 6px #e8eddd; }
+.sokoban-art .player { background: #719762; color: #fffefa; font-size: 20px; }
+.connect-art { grid-template-columns: repeat(4,18px); gap: 6px; background: #dee9ec; }
+.connect-art i { height: 18px; border-radius: 50%; background: #fffefa; }
+.connect-art i:nth-child(6), .connect-art i:nth-child(9), .connect-art i:nth-child(11) { background: #c87989; }
+.connect-art i:nth-child(8), .connect-art i:nth-child(10), .connect-art i:nth-child(12) { background: #eacb7c; }
 .game-copy { display: flex; flex-direction: column; flex: 1; min-width: 0; padding: 15px 9px 7px; }
 .game-badge-row { min-height: 18px; display: flex; align-items: center; }
 .pill { font-size: 10px; font-weight: 700; color: #71815e; letter-spacing: .02em; }
@@ -119,10 +128,12 @@ h1 em { color: var(--green); font-style: normal; }
 .game-empty button { min-height: 44px; padding: 11px 18px; border: 1px solid var(--line); border-radius: 11px; background: #e8eedd; color: var(--green); font-weight: 700; }
 .module-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
 .module-card { display: flex; align-items: center; gap: 23px; padding: 27px; background: #fffefa; }
-.module-card:last-child { background: #f0f2e9; }
+.module-card:nth-child(even) { background: #f0f2e9; }
 .module-card>div:last-child { flex: 1; min-width: 0; }
 .module-icon { width: 88px; height: 104px; display: grid; place-items: center; flex-shrink: 0; border-radius: 24px; background: #f3e4bc; font-size: 44px; }
 .module-icon.blocks-icon { background: #dee8d5; }
+.module-icon.music-icon { background: #e7ddeb; color: #866e9c; font-size: 56px; }
+.module-icon.pixel-icon { background: #dee9ec; color: #63909d; font-size: 56px; }
 .module-card h3 { margin: 0 0 9px; font-size: 23px; letter-spacing: -.025em; }
 .module-card p { margin: 0 0 16px; color: var(--muted); font-size: 14px; line-height: 1.8; }
 .module-card .play { display: inline-flex; gap: 25px; background: transparent; color: var(--green); border: 1px solid #c7d4bd; min-height: 44px; }
@@ -182,6 +193,12 @@ h1 em { color: var(--green); font-style: normal; }
   .memory-art i { height: 20px; border-radius: 5px; }
   .brick-art { grid-template-columns: repeat(3,20px); gap: 4px; }
   .brick-art i { height: 11px; }
+  .sokoban-art { grid-template-columns: repeat(3,18px); gap: 4px; }
+  .sokoban-art i { height: 18px; }
+  .sokoban-art .target { box-shadow: inset 0 0 0 4px #e8eddd; }
+  .sokoban-art .player { font-size: 16px; }
+  .connect-art { grid-template-columns: repeat(4,14px); gap: 4px; }
+  .connect-art i { height: 14px; }
   .module-grid { grid-template-columns: 1fr; }
   .module-card { padding: 22px; }
   .module-icon { width: 90px; height: 95px; font-size: 43px; }

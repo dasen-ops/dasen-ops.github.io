@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f6ee">
+  <title>小小节奏机 · Dyson的小小空间</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/shared.css">
+  <link rel="stylesheet" href="../../assets/site-nav.css">
+  <link rel="stylesheet" href="music.css">
+  <script src="../../assets/site-core.js" defer></script>
+  <script src="../../assets/site-nav.js" defer></script>
+  <script src="../../assets/vendor/tone/Tone-15.1.22.js" defer></script>
+  <script src="music.js" defer></script>
+</head>
+<body data-site-section="draw">
+  <main class="page-shell music-shell" id="music-app" data-state="idle" data-step="-1">
+    <a class="back-link" href="../../index.html#creative">← 返回首页</a>
+    <header class="page-head">
+      <h1>♫ 小小节奏机</h1>
+      <p>点亮格子，再按播放。让鼓、沙沙铃和小星音一起跳舞！</p>
+    </header>
+
+    <section class="panel music-panel" aria-label="八拍节奏创作">
+      <div class="playbar">
+        <div class="play-actions">
+          <button class="btn primary" id="play-music" type="button">▶ 播放</button>
+          <button class="btn" id="stop-music" type="button" disabled>■ 停止</button>
+        </div>
+        <div class="beat-display" aria-hidden="true"><span class="beat-dot"></span><span id="beat-display">准备好啦</span></div>
+      </div>
+
+      <div class="music-tracks" id="music-tracks"></div>
+      <p class="grid-tip">每行从第 1 拍读到第 8 拍，亮起的格子会发出声音。播放时也能修改。</p>
+
+      <div class="music-controls">
+        <label class="range-control" for="music-tempo"><span>速度 <output id="tempo-value" for="music-tempo">100</output><small>拍 / 分钟</small></span><input id="music-tempo" type="range" min="60" max="180" step="5" value="100"></label>
+        <label class="range-control" for="music-volume"><span>音量 <output id="volume-value" for="music-volume">25</output><small>%</small></span><input id="music-volume" type="range" min="0" max="50" step="1" value="25"></label>
+      </div>
+      <p id="music-status" class="music-status" role="status" aria-live="polite">点亮几个格子，按播放就能听到。首次播放会打开声音。</p>
+    </section>
+
+    <section class="music-tools" aria-label="节奏灵感和保存">
+      <div class="preset-group"><h2>试试这些节奏</h2><div class="preset-buttons" role="group" aria-label="选择预置节奏"><button class="btn" data-preset="walk" type="button">轻快散步</button><button class="btn" data-preset="rain" type="button">小雨滴</button><button class="btn" data-preset="stars" type="button">星星跳舞</button></div></div>
+      <div class="file-actions"><button class="btn" id="clear-music" type="button">清空格子</button><button class="btn" id="open-music" type="button">↑ 打开节奏</button><button class="btn" id="download-music" type="button">↓ 下载节奏 JSON</button><input id="music-file" type="file" accept=".json,application/json" hidden></div>
+    </section>
+    <p id="draft-status" class="draft-status">节奏只记在这台设备的浏览器里，不会上传。下载后可用“打开节奏”继续玩。</p>
+    <footer class="page-footer">声音由 <a href="https://github.com/Tonejs/Tone.js" target="_blank" rel="noopener">Tone.js</a> 在本机合成。离开页面或切到后台时，会自动停止播放。</footer>
+    <noscript><p>请允许浏览器运行 JavaScript，就可以创作节奏了。</p></noscript>
+  </main>
+</body>
+</html>

@@ -1,0 +1,32 @@
+.connect4-page{width:min(880px,calc(100% - 40px));margin:0 auto;padding:28px 0 48px}
+.eyebrow{color:var(--muted);font-size:12px;font-weight:700;letter-spacing:.1em}
+.page-head h1{margin-top:8px}.page-head h1 span{color:#e6bd55;font-size:.65em;vertical-align:.1em}
+.game-controls{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.mode-picker,.restart-controls{display:flex;align-items:center;gap:8px}
+.mode-button{background:var(--paper)}.mode-button[aria-pressed=true]{background:#e7eee1;border-color:#bdcdb7;color:var(--green)}
+.difficulty-label{font-size:12px;color:var(--muted)}
+#difficulty{min-height:46px;min-width:82px;padding:8px 10px;border:1px solid var(--line);border-radius:12px;color:var(--ink);background:var(--paper);cursor:pointer}
+.play-area{width:min(100%,560px);margin:0 auto}
+.turn-strip{display:flex;align-items:center;gap:10px;min-height:66px;padding:8px 4px}
+#game-status{margin:0;font-size:16px;font-weight:700;line-height:1.6}
+.turn-disc{flex:0 0 20px;width:20px;height:20px;border:2px solid #0000000c;border-radius:50%}.turn-disc.red{background:#dc7865}.turn-disc.yellow{background:#edcb61}.turn-disc.draw{background:#d1d9cc}
+.board-stage{border-radius:24px;overflow:hidden;background:var(--green);box-shadow:0 6px 18px #263f350a}
+.board-columns{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));padding:0;gap:0}
+.column-button{display:flex;flex-direction:column;align-items:center;gap:7px;min-width:44px;padding:3px 7px 11px;border:0;border-radius:0;background:transparent;color:white;touch-action:manipulation}
+.column-button:disabled{opacity:1}.column-button:not(:disabled):hover,.column-button.selected:not(:disabled){background:#ffffff12}
+.column-button:focus-visible{outline:3px solid #edcb61;outline-offset:-3px;position:relative;z-index:1}
+.column-label{display:flex;align-items:center;justify-content:center;gap:5px;width:100%;min-height:44px;color:#dbe7d8;font-size:13px;font-weight:700}
+.column-label:before{content:'↓';color:#edcb61;visibility:hidden}.column-button.selected:not(:disabled) .column-label:before{visibility:visible}
+.cell{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:1;border-radius:50%;background:#edf0e7;border:2px solid #ffffff16;box-shadow:inset 0 2px 3px #263f3514;font-size:clamp(10px,2.3vw,16px);font-weight:800;color:#713c31}
+.cell.red{background:#df806d;border-color:#f5baaa}.cell.yellow{background:#efce69;border-color:#f8e5ac;color:#6b5522}
+.cell.last{animation:disc-arrive .23s ease-out}.cell.winning{outline:3px solid #fffdf0;outline-offset:-5px;color:#fff;background:#a14d3e}.cell.yellow.winning{background:#a57b1e}
+.keyboard-help{margin:15px 0 0;color:var(--muted);font-size:12px;text-align:center;line-height:1.8}
+.score-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:min(560px,100%);margin:26px auto 0;gap:10px}
+.score-strip>div{display:flex;flex-direction:column;align-items:center;gap:7px;padding:15px 7px;border:1px solid var(--line);border-radius:16px;background:var(--paper)}
+.score-strip span{font-size:12px;color:var(--muted)}.score-strip strong{font-size:23px;color:var(--green)}
+.storage-note{margin:18px auto 0;max-width:560px;font-size:12px;line-height:1.8;color:var(--muted);text-align:center}
+.page-footer{text-align:center}
+@keyframes disc-arrive{from{transform:translateY(-16px);opacity:.5}to{transform:translateY(0);opacity:1}}
+@media(max-width:600px){.connect4-page{width:calc(100% - 24px);padding:20px 0 36px}.game-controls{gap:10px;margin-bottom:10px}.mode-picker{display:grid;grid-template-columns:1fr 1fr;width:100%}.restart-controls{width:100%;justify-content:flex-end}.difficulty-label{margin-right:auto}.game-controls .btn{padding:10px 12px;font-size:13px}.page-head{margin-bottom:18px}.column-button{gap:5px;padding:2px 5px 8px}.board-stage{border-radius:18px}.turn-strip{min-height:62px}.score-strip{gap:6px;margin-top:22px}.score-strip span{font-size:11px}}
+@media(max-width:350px){.board-stage{width:calc(100% + 12px);margin-left:-6px}.column-button{padding-left:5px;padding-right:5px}.column-label{font-size:12px;gap:2px}.keyboard-help{font-size:11px}.score-strip>div{padding:12px 3px}}
+@media(prefers-reduced-motion:reduce){.cell.last{animation:none}}
