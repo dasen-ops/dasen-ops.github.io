@@ -1,9 +1,46 @@
 <!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f7f4e8"><title>小相册 · Dyson的小小空间</title><link rel="stylesheet" href="../assets/shared.css"><link rel="stylesheet" href="../assets/vendor/photoswipe/photoswipe.css"><style>.album-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}figure{margin:0;border:1px solid var(--line);border-radius:24px;background:var(--paper);overflow:hidden}figure a{display:block;text-decoration:none}figure img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:#eaf0df}figcaption{padding:18px 21px;color:var(--ink);font-size:18px;font-weight:700}figcaption small{display:block;margin-top:6px;color:var(--muted);font-size:13px;font-weight:400;line-height:1.7}@media(max-width:600px){.album-grid{grid-template-columns:1fr;gap:16px}figcaption{font-size:17px}} </style></head>
-<body><main class="page-shell"><a class="back-link" href="../index.html#album">← 返回首页</a><header class="page-head"><h1>📷 小相册</h1><p>这是我们游乐园的游戏截图。点一下放大，左右滑动看下一张。</p></header>
-<div class="album-grid" data-gallery>
-<figure><a href="images/snake.png" data-pswp-width="960" data-pswp-height="720"><img src="images/snake.png" width="960" height="720" alt="水果贪吃蛇游戏的绿色花园"><figcaption>水果花园<small>我们的第一款小游戏，小蛇一路寻找水果。</small></figcaption></a></figure>
-<figure><a href="images/2048.png" data-pswp-width="960" data-pswp-height="720"><img src="images/2048.png" width="960" height="720" alt="2048 数字合合乐的游戏棋盘"><figcaption>数字合合乐<small>从小小的 2 出发，慢慢拼出更大的数字。</small></figcaption></a></figure>
-<figure><a href="images/memory.png" data-pswp-width="960" data-pswp-height="720"><img src="images/memory.png" width="960" height="720" alt="记忆方格中亮起来的格子"><figcaption>亮起来的方格<small>看清位置，把它们记在脑袋里。</small></figcaption></a></figure>
-<figure><a href="images/breakout.png" data-pswp-width="960" data-pswp-height="720"><img src="images/breakout.png" width="960" height="720" alt="打砖块游戏的彩色砖块和小球"><figcaption>彩色砖块<small>小球弹来弹去，一块块砖消失啦！</small></figcaption></a></figure>
-</div><footer class="page-footer">相册中的图片来自本小站的实际游戏画面。浏览效果由 <a href="https://github.com/dimsemenov/PhotoSwipe" target="_blank" rel="noopener">PhotoSwipe</a> 提供。</footer></main><script src="../assets/vendor/photoswipe/photoswipe.umd.min.js"></script><script src="../assets/vendor/photoswipe/photoswipe-lightbox.umd.min.js"></script><script src="../assets/gallery.js"></script></body></html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f4e8">
+  <title>小相册 · Dyson的小小空间</title>
+  <link rel="stylesheet" href="../assets/shared.css">
+  <link rel="stylesheet" href="../assets/site-nav.css">
+  <link rel="stylesheet" href="../assets/vendor/photoswipe/photoswipe.css">
+  <script src="../assets/site-core.js" defer></script>
+  <script src="../assets/site-nav.js" defer></script>
+  <style>
+    [hidden]{display:none!important}.album-section{margin:32px 0}.album-section h2{font-size:25px;margin:0 0 8px}.album-note{color:var(--muted);font-size:14px;margin:0 0 20px}.album-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}figure{margin:0;border:1px solid var(--line);border-radius:24px;background:var(--paper);overflow:hidden}figure>a{display:block;text-decoration:none}figure img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:#eaf0df}figcaption{padding:18px 21px;color:var(--ink);font-size:18px;font-weight:700;overflow-wrap:anywhere}figcaption small{display:block;margin-top:6px;color:var(--muted);font-size:13px;font-weight:400;line-height:1.7}.personal-artwork img{object-fit:contain;background:#fff}.artwork-actions{display:flex;gap:10px;flex-wrap:wrap;padding:0 20px 18px}.artwork-delete,.artwork-download{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 14px;border:1px solid #d4decb;border-radius:12px;background:#edf2e5;color:#39734d;font-size:13px;font-weight:700;text-decoration:none}.artwork-delete{background:#fff6f1;border-color:#e6d7ce;color:#925d4b}#personal-status{margin:16px 0;font-size:13px;line-height:1.8;color:var(--muted)}.album-empty{padding:24px;text-align:center;border:1px dashed #cbd9c2;border-radius:22px;background:#fffdf7}.album-empty p{margin:0 0 14px;font-size:15px;color:var(--muted)}#my-artworks{scroll-margin-top:20px}@media(max-width:600px){.album-grid{grid-template-columns:1fr;gap:16px}figcaption{font-size:17px}.album-section h2{font-size:22px}}
+  </style>
+</head>
+<body data-site-section="album">
+  <main class="page-shell">
+    <a class="back-link" href="../index.html#album">← 返回首页</a>
+    <header class="page-head"><h1>📷 小相册</h1><p>收好自己画的小世界，也看看游乐园里的精彩瞬间。点图片就能放大。</p></header>
+    <section class="album-section" id="my-artworks" aria-labelledby="personal-title">
+      <h2 id="personal-title">🎨 我的画作</h2>
+      <p class="album-note">在画板点“存到相册”，作品就会来到这里。最多收好 12 张；喜欢的画也可以下载留存。</p>
+      <div id="personal-empty" class="album-empty"><p>这里还没有你的画作。画一张喜欢的小世界吧！</p><a class="btn primary" href="../draw/index.html">去画画 →</a></div>
+      <div id="personal-gallery" class="album-grid"></div>
+      <p id="personal-status" role="status">正在打开本机相册……</p>
+    </section>
+    <section class="album-section" aria-labelledby="screenshots-title">
+      <h2 id="screenshots-title">🎮 游乐园小瞬间</h2>
+      <p class="album-note">这些是小游戏的实际画面。点一下放大，左右滑动看下一张。</p>
+      <div class="album-grid" data-gallery>
+        <figure><a href="images/snake.png" data-pswp-width="960" data-pswp-height="720"><img src="images/snake.png" width="960" height="720" alt="水果贪吃蛇游戏的绿色花园" loading="lazy"><figcaption>水果花园<small>我们的第一款小游戏，小蛇一路寻找水果。</small></figcaption></a></figure>
+        <figure><a href="images/2048.png" data-pswp-width="960" data-pswp-height="720"><img src="images/2048.png" width="960" height="720" alt="2048 数字合合乐的游戏棋盘" loading="lazy"><figcaption>数字合合乐<small>从小小的 2 出发，慢慢拼出更大的数字。</small></figcaption></a></figure>
+        <figure><a href="images/memory.png" data-pswp-width="960" data-pswp-height="720"><img src="images/memory.png" width="960" height="720" alt="记忆方格中亮起来的格子" loading="lazy"><figcaption>亮起来的方格<small>看清位置，把它们记在脑袋里。</small></figcaption></a></figure>
+        <figure><a href="images/breakout.png" data-pswp-width="960" data-pswp-height="720"><img src="images/breakout.png" width="960" height="720" alt="打砖块游戏的彩色砖块和小球" loading="lazy"><figcaption>彩色砖块<small>小球弹来弹去，一块块砖消失啦！</small></figcaption></a></figure>
+      </div>
+    </section>
+    <footer class="page-footer">画作和收藏保存在当前设备的浏览器中；清除浏览器数据会移除这些记录。重要作品请下载保存。相册浏览效果由 <a href="https://github.com/dimsemenov/PhotoSwipe" target="_blank" rel="noopener">PhotoSwipe</a> 提供。</footer>
+  </main>
+  <script src="../assets/vendor/photoswipe/photoswipe.umd.min.js"></script>
+  <script src="../assets/vendor/photoswipe/photoswipe-lightbox.umd.min.js"></script>
+  <script src="../assets/gallery.js"></script>
+  <script src="../assets/artwork-store.js"></script>
+  <script src="personal-gallery.js"></script>
+</body>
+</html>

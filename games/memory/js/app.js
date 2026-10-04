@@ -6,7 +6,7 @@
     normal: { numFields: 16, numLights: 6, showingTime: 2400 },
     hard: { numFields: 25, numLights: 10, showingTime: 2800 }
   };
-  var level = "easy", score = 0, elapsed = 0, startedAt = 0, timer = null;
+  var level = "easy", score = 0, elapsed = 0, startedAt = 0, timer = null, roundActive = false;
   var board = document.querySelector("#game-container");
   var status = document.querySelector("#game-status");
   var scoreLabel = document.querySelector("#score");
@@ -31,6 +31,7 @@
     timer = setInterval(updateTime, 100);
   }
   function finish(win) {
+    roundActive = false;
     if (timer !== null) updateTime();
     stopTimer();
     if (win) {
@@ -41,6 +42,7 @@
         status.textContent = "全找到了！你刷新了最高分！";
       } else status.textContent = "太棒了，全找到了！再挑战一次吧。";
       status.dataset.result = "win";
+      if (window.DysonCelebrate) window.DysonCelebrate();
     } else {
       status.textContent = "差一点点！星星标出了遗漏的格子，再试一次吧。";
       status.dataset.result = "lose";
@@ -58,6 +60,7 @@
     board.style.setProperty("--columns", Math.sqrt(levels[level].numFields));
   }
   function prepareBoard() {
+    roundActive = false;
     Game.cancel(); resetLabels();
     board.innerHTML = "";
     for (var i = 0; i < levels[level].numFields; i++) {
@@ -72,12 +75,14 @@
   }
   function startGame() {
     resetLabels();
+    roundActive = true;
     status.textContent = "仔细看！记住这 " + levels[level].numLights + " 个发亮的格子。";
     startButton.textContent = "重新开始";
     levels[level].progress = function (found, total) {
       score = found * 100; scoreLabel.textContent = score;
       progress.textContent = "找到：" + found + " / " + total;
     };
+    levels[level].hidden = function () { status.textContent = "格子藏起来啦，马上轮到你！"; };
     Game.start(levels[level], level, board, createTimer, finish);
   }
   document.querySelectorAll("[data-level]").forEach(function (button) {
@@ -90,6 +95,20 @@
     });
   });
   startButton.addEventListener("click", startGame);
-  window.addEventListener("pagehide", function () { stopTimer(); Game.cancel(); });
+  function leavePage() {
+    if (roundActive) {
+      prepareBoard();
+      status.textContent = "刚才离开了页面，这局已重新准备。点“开始挑战”再玩吧。";
+    } else {
+      stopTimer(); Game.cancel();
+      if (status.dataset.result === "lose") {
+        board.querySelectorAll(".light").forEach(function (field) { field.classList.add("miss-transition"); });
+      }
+    }
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) leavePage();
+  });
+  window.addEventListener("pagehide", leavePage);
   prepareBoard();
 }());

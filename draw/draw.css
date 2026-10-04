@@ -11,6 +11,11 @@ button:disabled { opacity: .42; cursor: default; }
 h1 { margin: 6px 0 8px; font-size: clamp(26px, 4vw, 38px); letter-spacing: -.5px; }
 h1 span { display: inline-block; margin-left: 5px; color: #e9ba45; }
 .drawing-header p { margin: 0; font-size: 15px; line-height: 1.7; color: #647467; }
+.save-actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
+.album-result { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; padding: 14px 18px; margin-bottom: 16px; border: 1px solid #c7d9bc; border-radius: 15px; background: #edf4e5; font-size: 14px; line-height: 1.7; }
+.album-result[hidden], .album-result a[hidden] { display: none; }
+.album-result p { margin: 0; }
+.album-result a { display: inline-flex; align-items: center; min-height: 44px; color: var(--green); font-weight: 700; padding: 5px 0; }
 .action-button { min-height: 46px; padding: 10px 17px; border: 1px solid var(--line); border-radius: 13px; background: #fffef9; color: var(--ink); font-weight: 700; }
 .action-button:hover:not(:disabled) { background: #edf3e8; }
 .primary { background: var(--green); color: white; border-color: var(--green); box-shadow: 0 4px 0 #275636; white-space: nowrap; }
@@ -55,15 +60,17 @@ h1 span { display: inline-block; margin-left: 5px; color: #e9ba45; }
 .load-message { padding: 20px; border: 1px solid #e5d1a3; border-radius: 14px; background: #fff5d9; }
 @media (max-width: 760px) {
   .drawing-app { width: calc(100% - 24px); margin: 12px auto 20px; }
-  .drawing-header { align-items: center; gap: 10px; margin-bottom: 14px; }
+  .drawing-header { align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; }
   .drawing-header p { max-width: 220px; font-size: 13px; }
+  .save-actions { width: 100%; gap: 8px; }
+  .save-actions button { flex: 1; }
   .drawing-header .primary { padding: 10px 12px; }
   .studio { padding: 12px; border-radius: 20px; }
   .toolbar { gap: 10px; }
   .tools { flex: 1 0 100%; }
   .tool-button { flex: 1; padding: 9px 8px; font-size: 14px; }
   .edit-tools { flex: 1; }
-  .edit-tools button { flex: 1; min-height: 42px; padding: 8px 12px; font-size: 13px; }
+  .edit-tools button { flex: 1; min-height: 44px; padding: 8px 12px; font-size: 13px; }
   .paint-options { padding: 12px 0; gap: 10px; }
   .palette { display: grid; width: 100%; max-width: 340px; grid-template-columns: repeat(4, minmax(44px, 1fr)); gap: 6px 8px; }
   .swatch { width: 44px; height: 44px; padding: 5px; justify-self: center; }

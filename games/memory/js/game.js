@@ -119,6 +119,7 @@
             fields.forEach(function (field) {
                 removeClass(field, 'shine');
             });
+            if (gameOptions.hidden) gameOptions.hidden();
         }, gameOptions.showingTime * 1.3);
 
         later(function () {

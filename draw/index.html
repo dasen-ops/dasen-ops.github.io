@@ -4,9 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#39734d">
-  <title>小小画室 · 创作乐园</title>
+  <title>小小画室 · Dyson的小小空间</title>
   <link rel="stylesheet" href="../assets/shared.css">
+  <link rel="stylesheet" href="../assets/site-nav.css">
   <link rel="stylesheet" href="draw.css">
+  <script src="../assets/site-core.js" defer></script>
+  <script src="../assets/site-nav.js" defer></script>
+  <script src="../assets/artwork-store.js" defer></script>
   <script src="vendor/konva-10.7.0.min.js" defer></script>
   <script src="draw.js" defer></script>
 </head>
@@ -14,12 +18,20 @@
   <main class="drawing-app">
     <header class="drawing-header">
       <div>
-        <a class="back-link" href="../index.html#creative">← 回到乐园</a>
+        <a class="back-link" href="../index.html#creative">← 返回首页</a>
         <h1>小小画室 <span aria-hidden="true">✿</span></h1>
         <p>挑个颜色，用手指或鼠标画出你的想法。</p>
       </div>
-      <button id="save-png" class="action-button primary" type="button">↓ 保存图片</button>
+      <div class="save-actions">
+        <button id="save-png" class="action-button" type="button">↓ 下载 PNG</button>
+        <button id="save-album" class="action-button primary" type="button">▧ 存到相册</button>
+      </div>
     </header>
+
+    <div id="album-result" class="album-result" role="status" aria-live="polite" hidden>
+      <p id="album-status"></p>
+      <a id="album-link" href="../album/index.html#my-artworks" hidden>去相册看看 →</a>
+    </div>
 
     <section class="studio" aria-label="画画工具和画布">
       <div class="toolbar">

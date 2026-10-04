@@ -6,6 +6,10 @@
   const draftStatus = document.getElementById('draft-status');
   const undoButton = document.getElementById('undo');
   const redoButton = document.getElementById('redo');
+  const albumButton = document.getElementById('save-album');
+  const albumResult = document.getElementById('album-result');
+  const albumStatus = document.getElementById('album-status');
+  const albumLink = document.getElementById('album-link');
   const WIDTH = 1000;
   const HEIGHT = 640;
   const DRAFT_KEY = 'creative-garden-drawing-v1';
@@ -23,6 +27,8 @@
   const copy = (value) => JSON.parse(JSON.stringify(value));
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
   const say = (message) => { feedback.textContent = message; };
+  const activate = (button, callback) => window.DysonSite
+    ? window.DysonSite.onActivate(button, callback) : button.addEventListener('click', callback);
 
   if (!window.Konva) {
     say('画板暂时没有打开，请刷新页面再试一次。');
@@ -44,7 +50,7 @@
       draftStatus.textContent = '草稿已保存在这台设备的浏览器里，不会上传。';
     } catch (_) {
       storageAvailable = false;
-      draftStatus.textContent = '浏览器暂时存不了草稿，离开前记得点“保存图片”。';
+      draftStatus.textContent = '浏览器暂时存不了草稿，离开前记得点“下载 PNG”。';
     }
   }
 
@@ -207,8 +213,8 @@
   window.addEventListener('pointercancel', finishStroke);
   window.addEventListener('blur', finishStroke);
 
-  document.querySelectorAll('[data-tool]').forEach((button) => button.addEventListener('click', () => chooseTool(button.dataset.tool)));
-  document.querySelectorAll('[data-color]').forEach((button) => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-tool]').forEach((button) => activate(button, () => chooseTool(button.dataset.tool)));
+  document.querySelectorAll('[data-color]').forEach((button) => activate(button, () => {
     color = button.dataset.color;
     document.querySelectorAll('[data-color]').forEach((swatch) => {
       const selected = swatch === button;
@@ -217,7 +223,7 @@
     });
     chooseTool('brush');
   }));
-  document.querySelectorAll('[data-size]').forEach((button) => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-size]').forEach((button) => activate(button, () => {
     size = Number(button.dataset.size);
     document.querySelectorAll('[data-size]').forEach((sizeButton) => {
       const selected = sizeButton === button;
@@ -226,7 +232,7 @@
     });
     say(`换成${button.textContent.trim()}画笔啦。`);
   }));
-  document.querySelectorAll('[data-sticker]').forEach((button) => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-sticker]').forEach((button) => activate(button, () => {
     finishStroke();
     if (state.stickers.length >= 40) { say('贴纸已经很多啦，先画几笔吧！'); return; }
     const before = copy(state);
@@ -238,7 +244,7 @@
     say('新贴纸来啦！用手指或鼠标拖动它。');
   }));
 
-  undoButton.addEventListener('click', () => {
+  activate(undoButton, () => {
     finishStroke();
     if (!past.length) return;
     future.push(copy(state));
@@ -247,7 +253,7 @@
     saveDraft();
     say('退回上一步了，放心再试一次。');
   });
-  redoButton.addEventListener('click', () => {
+  activate(redoButton, () => {
     if (!future.length) return;
     past.push(copy(state));
     state = future.pop();
@@ -255,7 +261,7 @@
     saveDraft();
     say('刚刚撤销的那一步回来啦。');
   });
-  document.getElementById('clear').addEventListener('click', () => {
+  activate(document.getElementById('clear'), () => {
     finishStroke();
     if (!state.strokes.length && !state.stickers.length) { say('画布已经是空白的，开始画吧！'); return; }
     if (!window.confirm('要把画布上的画和贴纸都清空吗？清空后还可以点“撤销”。')) return;
@@ -265,16 +271,65 @@
     remember(before);
     say('换一张新画纸啦！点“撤销”还可以找回刚才的画。');
   });
-  document.getElementById('save-png').addEventListener('click', () => {
+
+  function artworkTime() {
+    const parts = new Intl.DateTimeFormat('zh-CN', {
+      timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
+    }).formatToParts(new Date());
+    return Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  }
+
+  function exportCanvas() {
+    // A new canvas snapshots the visible white paper without changing drawing state.
+    const snapshot = stage.toCanvas({ pixelRatio: 2 / stage.scaleX() });
+    const canvas = document.createElement('canvas');
+    canvas.width = WIDTH * 2;
+    canvas.height = HEIGHT * 2;
+    canvas.getContext('2d').drawImage(snapshot, 0, 0, canvas.width, canvas.height);
+    return canvas;
+  }
+
+  activate(albumButton, async () => {
+    finishStroke();
+    albumButton.disabled = true;
+    albumButton.textContent = '正在保存…';
+    albumResult.hidden = false;
+    albumLink.hidden = true;
+    albumStatus.textContent = '正在把这张画放进本机相册…';
+    try {
+      if (!window.DysonArtworks) throw new Error('本机相册暂时没有打开，请先点“下载 PNG”保存图片。');
+      const canvas = exportCanvas();
+      const blob = await new Promise((resolve, reject) => {
+        canvas.toBlob((result) => result ? resolve(result) : reject(new Error('这张图片暂时没有准备好，请再试一次。')), 'image/png');
+      });
+      const time = artworkTime();
+      const name = `小画作 ${time.month}月${time.day}日 ${time.hour}:${time.minute}:${time.second}`;
+      const artwork = await window.DysonArtworks.save({ name, blob, width: canvas.width, height: canvas.height });
+      albumStatus.textContent = `“${artwork.name}”已经存到相册啦！只保存在这台设备的浏览器里，不会上传。`;
+      albumLink.textContent = '去相册看看 →';
+      albumLink.hidden = false;
+      say('画作已经存好啦，还可以接着画。');
+    } catch (error) {
+      albumStatus.textContent = error.message || '暂时没能存到相册，请先下载图片，稍后再试。';
+      if (['FULL', 'QUOTA'].includes(error.code)) {
+        albumLink.textContent = '去相册管理作品 →';
+        albumLink.hidden = false;
+      }
+    } finally {
+      albumButton.disabled = false;
+      albumButton.textContent = '▧ 存到相册';
+    }
+  });
+
+  activate(document.getElementById('save-png'), () => {
     finishStroke();
     try {
-      // Use the logical paper size so exported quality is independent of screen width.
-      const scale = stage.scaleX();
-      const data = stage.toDataURL({ pixelRatio: 2 / scale });
+      const data = exportCanvas().toDataURL('image/png');
       const link = document.createElement('a');
       link.href = data;
-      const today = new Date();
-      const stamp = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+      const time = artworkTime();
+      const stamp = `${time.year}-${time.month}-${time.day}`;
       link.download = `我的小小画作-${stamp}.png`;
       document.body.appendChild(link);
       link.click();
@@ -301,7 +356,7 @@
     }
   } catch (_) {
     storageAvailable = false;
-    draftStatus.textContent = '浏览器暂时存不了草稿，离开前记得点“保存图片”。';
+    draftStatus.textContent = '浏览器暂时存不了草稿，离开前记得点“下载 PNG”。';
   }
 
   render();

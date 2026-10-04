@@ -127,6 +127,7 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 HTMLActuator.prototype.message = function (won) {
   var type    = won ? "game-won" : "game-over";
   var message = won ? "太棒了，拼出 2048！" : "这局结束啦，再试一次！";
+  if (won && !this.messageContainer.classList.contains("game-won") && window.DysonCelebrate) window.DysonCelebrate();
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;

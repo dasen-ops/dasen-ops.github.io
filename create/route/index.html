@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f7f4e8">
+  <title>积木小路线 · Dyson的小小空间</title>
+  <link rel="stylesheet" href="../../assets/shared.css">
+  <link rel="stylesheet" href="../../assets/site-nav.css">
+  <link rel="stylesheet" href="route.css">
+  <script src="../../assets/site-core.js" defer></script>
+  <script src="../../assets/site-nav.js" defer></script>
+  <script src="../../assets/vendor/blockly/blockly_compressed.js" defer></script>
+  <script src="../../assets/vendor/blockly/zh-hans.js" defer></script>
+  <script src="../../assets/vendor/canvas-confetti/confetti.browser.js" defer></script>
+  <script src="../../assets/celebrate.js" defer></script>
+  <script src="route.js" defer></script>
+</head>
+<body data-site-section="draw">
+  <main class="page-shell">
+    <a class="back-link" href="../../index.html#creative">← 返回首页</a>
+    <header class="page-head"><h1>🧩 积木小路线</h1><p>把积木接在“开始”下面，让小蛇照着你的路线找到苹果。</p></header>
+    <div class="route-levels" role="group" aria-label="选择路线"><button type="button" data-level="0" aria-pressed="true">1 · 直直走</button><button type="button" data-level="1" aria-pressed="false">2 · 转个弯</button><button type="button" data-level="2" aria-pressed="false">3 · 小楼梯</button></div>
+    <div class="route-layout">
+      <section class="route-map panel" aria-label="路线舞台">
+        <div class="route-map-head"><h2 id="level-title">直直走</h2><span id="route-stars" aria-label="已完成的路线">☆☆☆</span></div>
+        <p id="level-tip" class="route-tip"></p>
+        <div id="route-board" class="route-board" role="img" aria-label="5 行 5 列的路线，绿色格子可以走"></div>
+        <p id="route-status" class="route-status" role="status" aria-live="polite">正在准备积木……</p>
+        <div class="run-actions"><button id="run-route" class="btn primary" type="button" disabled>▶ 跑一跑</button><button id="stop-route" class="btn" type="button" disabled>■ 停下来</button></div>
+        <button id="next-route" class="btn next-route" type="button" hidden>试试下一条路线 →</button>
+      </section>
+      <section class="route-editor panel" aria-label="拼接方向积木">
+        <div class="editor-head"><h2>拼好，再跑一跑</h2><button id="reset-route" class="btn" type="button">重新拼</button></div>
+        <p class="route-tip">可以拖积木，也可以点下面的方向，自动接到末尾。“重复”里面还能放方向积木。</p>
+        <div class="quick-blocks" role="group" aria-label="快速添加方向积木"><button type="button" data-add="N">↑ 上</button><button type="button" data-add="E">→ 右</button><button type="button" data-add="S">↓ 下</button><button type="button" data-add="W">← 左</button></div>
+        <div id="block-workspace" aria-label="积木拼接区"></div>
+        <p id="route-draft" class="route-draft">每条路线都会记住你在这台设备上拼的积木。</p>
+      </section>
+    </div>
+    <footer class="page-footer">积木编辑器由 <a href="https://github.com/RaspberryPiFoundation/blockly" target="_blank" rel="noopener">Blockly</a> 提供。路线与积木指令由本站制作，进度只保存在当前浏览器。</footer>
+    <noscript><p>请允许浏览器运行 JavaScript，就可以拼积木了。</p></noscript>
+  </main>
+</body>
+</html>
