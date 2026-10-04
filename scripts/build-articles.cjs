@@ -12,7 +12,7 @@ for (const article of articles) {
   const markdown = fs.readFileSync(path.join(root, 'articles/content', article.slug + '.md'), 'utf8');
   const content = marked.parse(markdown, { gfm:true });
   const html = `<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4e8"><title>${article.title} · Dyson的小小空间</title><link rel="stylesheet" href="../assets/shared.css"><link rel="stylesheet" href="../assets/site-nav.css"><link rel="stylesheet" href="../assets/article.css"><script src="../assets/site-core.js" defer></script><script src="../assets/site-nav.js" defer></script></head>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f4e8"><title>${article.title} · Dyson的小小空间</title><link rel="stylesheet" href="../assets/shared.css"><link rel="stylesheet" href="../assets/site-nav.css"><link rel="stylesheet" href="../assets/article.css"><script src="../assets/site-core.js?v=20261004-modules" defer></script><script src="../assets/site-nav.js" defer></script></head>
 <body data-site-section="talk"><main class="page-shell article-shell"><a class="back-link" href="../index.html#talk">← 返回首页</a><article class="surface prose"><div class="article-date">${article.date}</div>${content}</article><nav class="article-nav" aria-label="其他文章"><a class="btn" href="${article.next}.html">再读一篇：${article.nextTitle} →</a></nav><footer class="page-footer">Dyson的小小空间 · 留下小小的发现</footer></main></body></html>
 `;
   fs.writeFileSync(path.join(root, 'articles', article.slug + '.html'), html);
