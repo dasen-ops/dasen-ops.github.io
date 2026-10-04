@@ -1,1 +1,21 @@
-.article-shell{max-width:780px}.prose{margin-top:24px;padding:36px 42px}.article-date{font-size:13px;color:var(--muted);margin-bottom:13px}.prose h1{font-size:32px;margin:0 0 25px}.prose h2{font-size:22px;margin:30px 0 13px}.prose p,.prose li{font-size:16px;line-height:1.95;color:#4d6256}.prose li{margin:10px 0}.prose ul{padding-left:23px}.prose strong{color:#39734d}.article-nav{margin-top:22px}.article-nav a{line-height:1.6;text-align:left;max-width:100%}.prose img{max-width:100%}@media(max-width:600px){.prose{padding:25px 21px}.prose h1{font-size:26px}.prose h2{font-size:20px}.prose p,.prose li{font-size:15px}}
+.article-shell{max-width:780px}
+.prose{margin-top:26px;padding:40px 44px;overflow-wrap:break-word}
+.article-date{margin-bottom:16px;color:#637568;font-size:13px;line-height:1.6}
+.prose h1{margin:0 0 26px;color:#263f35;font-size:clamp(29px,4vw,35px);line-height:1.45;letter-spacing:-.02em}
+.prose h2{margin:34px 0 14px;color:#315d49;font-size:24px;line-height:1.5}
+.prose h3{margin:26px 0 12px;color:#263f35;font-size:20px;line-height:1.5}
+.prose p,.prose li{color:#435d4d;font-size:17px;line-height:1.95}
+.prose p{margin:0 0 20px}
+.prose li{margin:9px 0}
+.prose ul,.prose ol{margin:12px 0 24px;padding-left:24px}
+.prose strong{color:#315d49;font-weight:700}
+.prose a{color:#315d49;text-underline-offset:3px;overflow-wrap:anywhere}
+.prose img{max-width:100%;height:auto;border-radius:16px}
+.prose blockquote{margin:24px 0;padding:12px 20px;border-left:3px solid #b7c8ad;border-radius:0 12px 12px 0;background:#f0f3eb;color:#637568}
+.prose blockquote p:last-child{margin-bottom:0}
+.prose pre{max-width:100%;margin:22px 0;padding:16px;overflow:auto;border:1px solid #dfe5d8;border-radius:12px;background:#f0f3eb;font-size:14px;line-height:1.7}
+.prose>:last-child{margin-bottom:0}
+.article-nav{margin-top:24px}
+.article-nav a{max-width:100%;line-height:1.6;text-align:left;overflow-wrap:anywhere}
+.article-shell .page-footer{margin-top:28px}
+@media(max-width:600px){.prose{margin-top:20px;padding:26px 22px}.prose h1{margin-bottom:22px;font-size:28px}.prose h2{margin-top:28px;font-size:22px}.prose h3{font-size:19px}.prose p,.prose li{font-size:16px;line-height:1.9}.article-date{font-size:12px}.prose blockquote{padding:12px 14px}.article-nav{margin-top:20px}}

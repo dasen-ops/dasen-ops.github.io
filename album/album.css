@@ -1,0 +1,51 @@
+:root {
+  --green: #315d49;
+  --ink: #263f35;
+  --muted: #637568;
+  --line: #dfe5d8;
+  --paper: #fff;
+  color: var(--ink);
+  background: #f6f6ee;
+}
+
+body { background: #f6f6ee; }
+[hidden] { display: none !important; }
+.page-head { margin: 18px 0 24px; }
+.page-head p { max-width: 740px; }
+.album-section { margin: 26px 0; }
+.album-section h2 { margin: 0 0 7px; font-size: 23px; }
+.album-note { margin: 0 0 16px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+.album-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.album-grid figure { min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: #fff; box-shadow: 0 5px 16px #263f3506; }
+.album-grid figure > a { display: block; color: var(--ink); text-decoration: none; }
+.album-grid figure img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; background: #eff3e9; }
+.album-grid figcaption { padding: 16px 18px 18px; color: var(--ink); font-size: 17px; font-weight: 700; line-height: 1.55; overflow-wrap: anywhere; }
+.album-grid figcaption small { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; font-weight: 400; line-height: 1.8; }
+.album-grid .personal-artwork img { aspect-ratio: 25 / 16; object-fit: contain; background: #fff; }
+#personal-gallery:has(> .personal-artwork:only-child) { grid-template-columns: minmax(0, 460px); }
+.artwork-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 18px 18px; }
+.artwork-download, .artwork-delete { display: inline-flex; flex: 1; align-items: center; justify-content: center; min-height: 44px; min-width: 90px; padding: 10px 12px; border: 1px solid #d3dfcc; border-radius: 12px; background: #edf3e7; color: var(--green); font: inherit; font-size: 13px; font-weight: 700; line-height: 1.5; text-decoration: none; box-shadow: 0 2px 5px #263f3505; }
+.artwork-download:hover { background: #e3ecdc; }
+.artwork-delete { border-color: #e5d9d2; background: #fff; color: #8a5b50; }
+.artwork-delete:hover { background: #fff4ee; }
+#personal-status { margin: 12px 0 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+.album-empty { padding: 26px 22px; border: 1px dashed #cbd8c2; border-radius: 24px; background: #fff; text-align: center; }
+.album-empty p { margin: 0 0 15px; color: var(--muted); font-size: 15px; }
+.album-empty .btn { min-height: 44px; border-radius: 12px; box-shadow: 0 3px 8px #263f3510; }
+#my-artworks { scroll-margin-top: 24px; }
+.page-footer { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); }
+
+@media (max-width: 1000px) {
+  .album-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+}
+
+@media (max-width: 600px) {
+  .page-head { margin: 16px 0 22px; }
+  .album-section { margin: 24px 0; }
+  .album-section h2 { font-size: 21px; }
+  .album-note { margin-bottom: 14px; font-size: 13px; }
+  .album-grid { grid-template-columns: 1fr; gap: 16px; }
+  .album-grid figcaption { padding: 15px 17px 17px; font-size: 17px; }
+  .artwork-actions { padding: 0 17px 17px; }
+  .album-empty { padding: 24px 18px; }
+}

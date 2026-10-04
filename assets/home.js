@@ -52,7 +52,7 @@
       card.hidden = !matches || (filter === 'favorites' && !favorite);
       if (!card.hidden) visible++;
       const score = site.bestScore(id);
-      card.querySelector('[data-score]').textContent = score === null ? '在线花园 · 含排行榜' : score > 0 ? '本机最高分：' + score : '来创造你的新纪录';
+      card.querySelector('[data-score]').textContent = score === null ? '在线花园 · 含排行榜' : score > 0 ? '本机最高分：' + score : '';
     }
     filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.gameFilter === filter)));
     count.textContent = visible + ' 款小游戏';
@@ -78,5 +78,11 @@
   window.addEventListener('dyson-site-change', update);
   window.addEventListener('pageshow', update);
   document.querySelector('#catalog-tools').hidden = false;
+  const syncNavigation = () => document.querySelectorAll('.quick-nav a').forEach(link => {
+    if (link.hash === location.hash) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+  window.addEventListener('hashchange', syncNavigation);
+  syncNavigation();
   update();
 })();

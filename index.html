@@ -4,62 +4,64 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="description" content="Dyson的小小空间：水果贪吃蛇、2048、记忆方格、打砖块，画板、作品相册和随手记录。">
-  <meta name="theme-color" content="#f7f4e8">
+  <meta name="theme-color" content="#f6f6ee">
   <title>Dyson的小小空间</title>
-  <style>
-    :root{font-family:"Microsoft YaHei",system-ui,sans-serif;color:#244238;background:#f7f4e8;--green:#39734d;--ink:#244238;--muted:#718079;--paper:#fffdf7;--line:#dce2d5;--yellow:#f7d368;--blue:#dce9f8}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 10% 8%,#dceec9 0,transparent 30%),radial-gradient(circle at 92% 16%,#f9df9c 0,transparent 25%),#f7f4e8}
-    a{color:inherit}.wrap{width:min(1040px,calc(100% - 32px));margin:auto}.hero{padding:28px 0 32px}.topbar{display:flex;align-items:center;justify-content:space-between}.brand{font-size:12px;font-weight:800;letter-spacing:3px;color:#5f8069}.date-tag{padding:9px 14px;border:1px solid #d4ddc9;border-radius:999px;background:#ffffff8f;color:#647568;font-size:13px}
-    .hero-main{display:grid;grid-template-columns:1fr 310px;gap:42px;align-items:center;padding:64px 0 34px}.hello{display:inline-flex;gap:8px;align-items:center;margin-bottom:14px;color:#52715c;font-weight:700}.hello:before{content:"";width:26px;height:2px;background:#82a06e}.hero h1{max-width:650px;margin:0;font-size:clamp(42px,7vw,72px);line-height:1.08;letter-spacing:2px}.hero h1 em{color:var(--green);font-style:normal}.lead{max-width:560px;margin:20px 0 0;color:var(--muted);font-size:17px;line-height:1.9}.garden{position:relative;height:260px;border:1px solid #d9e1cf;border-radius:42px;background:#fffdf5bd;box-shadow:0 24px 70px #49603917;overflow:hidden}.sun{position:absolute;right:28px;top:25px;width:74px;height:74px;border-radius:50%;background:var(--yellow);box-shadow:0 0 0 16px #f7d3682b}.hill{position:absolute;left:-25px;right:-30px;bottom:-55px;height:170px;border-radius:50% 50% 0 0;background:#bbd69e}.hill.back{left:80px;right:-80px;bottom:18px;height:105px;background:#dcebc7}.snake{position:absolute;left:70px;bottom:57px;font-size:68px;filter:drop-shadow(0 8px 6px #49603922)}.fruit{position:absolute;right:70px;bottom:52px;font-size:48px;filter:drop-shadow(0 7px 5px #49603922)}
-    .quick-nav{display:grid;grid-template-columns:1fr 1fr;gap:16px}.quick-nav a{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border:1px solid var(--line);border-radius:22px;background:#fffdf7d9;text-decoration:none;font-weight:800;box-shadow:0 10px 28px #2d4a3510}.quick-nav span,.quick-nav b{white-space:nowrap}.quick-nav span{font-size:24px}.quick-nav a:hover{transform:translateY(-2px);box-shadow:0 14px 30px #2d4a3518}
-    main{padding:28px 0 72px}.section{scroll-margin-top:18px;margin-top:42px}.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}.kicker{color:#738575;font-size:12px;font-weight:800;letter-spacing:2px}.section h2{margin:5px 0 0;font-size:32px}.section-note{color:#829087;font-size:14px}.game-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}.card{border:1px solid var(--line);border-radius:28px;background:var(--paper);box-shadow:0 14px 38px #2b483612}.game-card{position:relative;min-height:286px;padding:30px;overflow:hidden}.game-card:after{content:"";position:absolute;width:220px;height:220px;right:-42px;bottom:-62px;border-radius:50%;background:#d9e9c6}.game-icon{position:absolute;z-index:1;right:46px;bottom:28px;font-size:96px;transform:rotate(-8deg);filter:drop-shadow(0 12px 8px #31543b22)}.pill{display:inline-block;padding:7px 12px;border-radius:999px;background:#e5efd8;color:#496b4c;font-size:12px;font-weight:800}.game-card h3{position:relative;z-index:2;margin:20px 0 10px;font-size:30px}.game-card p{position:relative;z-index:2;max-width:390px;color:var(--muted);line-height:1.8}.play{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px;margin-top:12px;padding:13px 20px;border-radius:14px;background:var(--green);color:white;text-decoration:none;font-weight:800;box-shadow:0 4px 0 #255637}.soon{display:grid;place-items:center;min-height:286px;padding:26px;text-align:center;background:#fffaf0}.soon-icon{font-size:48px}.soon h3{margin:12px 0 8px}.soon p{margin:0;color:var(--muted);line-height:1.7}
-    .talk-card{display:grid;grid-template-columns:170px 1fr;gap:28px;padding:28px}.talk-label{display:flex;min-height:150px;align-items:center;justify-content:center;border-radius:22px;background:var(--blue);font-size:64px}.talk-content{align-self:center}.talk-content time{color:#738279;font-size:13px}.talk-content h3{margin:8px 0;font-size:25px}.talk-content p{margin:0;color:var(--muted);font-size:15px;line-height:1.9}.talk-tip{margin-top:15px;padding-top:15px;border-top:1px dashed #d7ddd2;color:#52705d;font-size:13px}
-    footer{padding:28px 0 42px;border-top:1px solid #dfe3d8;color:#7a887f;font-size:13px}.footer-row{display:flex;justify-content:space-between;gap:20px}.heart{color:#c4675d}
-    @media(max-width:720px){.wrap{width:min(100% - 22px,620px)}.hero{padding-top:18px}.date-tag{display:none}.hero-main{grid-template-columns:1fr;gap:26px;padding:44px 0 24px}.hero h1{font-size:43px}.lead{font-size:15px}.garden{height:210px}.quick-nav{gap:10px}.quick-nav a{padding:16px}.quick-nav span{font-size:21px}.quick-nav b{font-size:12px}main{padding-top:12px}.section{margin-top:34px}.section h2{font-size:27px}.section-note{display:none}.game-grid{grid-template-columns:1fr}.game-card{min-height:280px;padding:24px}.game-icon{right:26px;font-size:82px}.soon{min-height:190px}.talk-card{grid-template-columns:1fr;gap:18px;padding:20px}.talk-label{min-height:120px}.footer-row{display:block;line-height:1.9}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.quick-nav a:hover{transform:none}}
-  </style>
+
   <link rel="stylesheet" href="assets/home.css">
   <link rel="stylesheet" href="assets/vendor/photoswipe/photoswipe.css">
   <script src="assets/site-core.js" defer></script>
   <script src="assets/home.js" defer></script>
 </head>
 <body>
-  <header class="hero">
-    <div class="wrap">
-      <div class="topbar"><div class="brand">DYSON'S LITTLE PLACE</div><div class="date-tag">🌱 慢慢更新，开心就好</div></div>
-      <div class="hero-main">
-        <div><div class="hello">欢迎来玩</div><h1>Dyson的<br><em>小小空间</em></h1><p class="lead">玩一局小游戏，画一个小世界，再留下一点有趣的发现。点开喜欢的内容，随便逛逛吧。</p></div>
-        <div class="garden" aria-hidden="true"><div class="sun"></div><div class="hill back"></div><div class="hill"></div><div class="snake">🐍</div><div class="fruit">🍎</div></div>
-      </div>
-      <nav class="quick-nav" aria-label="首页板块"><a href="#games"><span>🎮 小游戏</span><b>↓</b></a><a href="#creative"><span>🎨 创作角</span><b>↓</b></a><a href="#album"><span>📷 小相册</span><b>↓</b></a><a href="#talk"><span>☕ 闲聊</span><b>↓</b></a></nav>
+  <a class="skip-link" href="#games">跳到小游戏</a>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html" aria-label="Dyson的小小空间首页"><span class="brand-mark" aria-hidden="true">d<span>✦</span></span><span class="brand-copy">Dyson的小小空间<small>玩一点，创造多一点</small></span></a>
+      <nav class="quick-nav" aria-label="首页板块"><a href="#games">小游戏</a><a href="#creative">创作角</a><a href="#album">小相册</a><a href="#talk">闲聊</a></nav>
+      <span class="header-note">今天也有新点子 <i aria-hidden="true">✦</i></span>
     </div>
   </header>
   <main class="wrap">
+    <section class="welcome-grid" aria-label="欢迎来到小站">
+      <div class="welcome-panel">
+        <span class="welcome-label"><i aria-hidden="true">✦</i> 欢迎来玩</span>
+        <h1>小小空间，<br><em>大大的奇思妙想。</em></h1>
+        <p class="lead">玩一局小游戏，画一个小世界。<br>在这里，把喜欢的点子变成自己的作品。</p>
+        <div class="welcome-actions"><a class="button primary" href="#games">去玩小游戏 <span aria-hidden="true">↗</span></a><a class="button secondary" href="draw/index.html">打开画板 <span aria-hidden="true">→</span></a></div>
+        <div class="welcome-doodle" aria-hidden="true"><span>✳</span><i>✦</i></div>
+      </div>
+      <a class="spotlight" href="create/route/index.html">
+        <span class="spotlight-label">创作角 · 新玩法 <span aria-hidden="true">↗</span></span>
+        <div class="route-illustration" aria-hidden="true"><div class="route-path"><span class="path-snake">🐍</span><i class="path-step">→</i><i class="path-step">↑</i><span class="path-apple">🍎</span></div><span class="mini-block"><b>重复 4 次</b><i>向右走一步 →</i></span><span class="route-spark">✦</span></div>
+        <div class="spotlight-copy"><h2>拼一条自己的路线</h2><p>拖拖积木，让小蛇找到苹果。</p><span class="spotlight-link">去拼积木 <span aria-hidden="true">→</span></span></div>
+      </a>
+    </section>
+
     <section class="section" id="games">
-      <div class="section-head"><div><div class="kicker">PLAY / 玩一会儿</div><h2>小游戏</h2></div><div class="section-note">4 款小游戏 · 手机也能玩</div></div>
+      <div class="section-head"><div><span class="kicker">随时来一局</span><h2>小游戏</h2></div><div class="section-meta"><span id="game-count" aria-live="polite">4 款小游戏</span><span class="section-note">点 ☆，收好喜欢的游戏</span></div></div>
       <div id="catalog-tools" hidden>
         <div class="catalog-controls">
-          <label class="game-search-label" for="game-search">找个游戏<input id="game-search" type="search" placeholder="试试“数字”或“记忆”" maxlength="80" autocomplete="off"></label>
+          <label class="game-search-label" for="game-search"><span class="visually-hidden">找个游戏</span><span class="search-symbol" aria-hidden="true">⌕</span><input id="game-search" type="search" placeholder="找个游戏，比如“记忆”" maxlength="80" autocomplete="off"></label>
           <div class="game-filters" aria-label="游戏筛选"><button type="button" data-game-filter="all" aria-pressed="true">全部游戏</button><button type="button" data-game-filter="favorites" aria-pressed="false">★ 我的收藏</button></div>
         </div>
         <div id="recent-games" class="recent-games" hidden><span>最近玩过</span><div id="recent-links"></div></div>
         <p id="catalog-status" class="catalog-status" role="status"></p>
-        <p id="game-count" class="game-count" aria-live="polite"></p>
       </div>
       <div class="game-grid">
-        <article class="card game-card" data-game="snake"><div class="game-copy"><span class="pill">水果冒险</span><h3>贪吃蛇 · 水果花园</h3><p>寻找苹果和金色惊喜，挑战石头迷宫与神奇传送门。</p><a class="play" href="https://dyson-snake-rank-d7emszy6bdd3b85-1488624432.tcloudbaseapp.com/">开始游戏 <span>→</span></a></div><div class="game-art snake-art" aria-hidden="true">🐍</div></article>
-        <article class="card game-card game-2048" data-game="2048"><div class="game-copy"><span class="pill">数字益智</span><h3>2048 · 数字合合乐</h3><p>滑一滑，把相同数字合起来。看看你能拼到多大！</p><a class="play" href="games/2048/index.html">开始游戏 <span>→</span></a></div><div class="game-art number-art" aria-hidden="true"><i>2</i><i>4</i><i>8</i><i>16</i></div></article>
-        <article class="card game-card game-memory" data-game="memory"><div class="game-copy"><span class="pill">记忆挑战</span><h3>记忆方格</h3><p>记住亮起来的位置，再把它们找出来。眼力和记忆一起上场！</p><a class="play" href="games/memory/index.html">开始游戏 <span>→</span></a></div><div class="game-art memory-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
-        <article class="card game-card game-breakout" data-game="breakout"><div class="game-copy"><span class="pill">反应挑战</span><h3>打砖块</h3><p>接住弹跳的小球，把彩色砖块一块块打掉，挑战下一关！</p><a class="play" href="games/breakout/index.html">开始游戏 <span>→</span></a></div><div class="game-art brick-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="card game-card" data-game="snake"><div class="game-copy"><span class="pill">水果冒险</span><h3>水果贪吃蛇</h3><p>穿过花园，寻找水果和神奇传送门。</p><a class="play" href="https://dyson-snake-rank-d7emszy6bdd3b85-1488624432.tcloudbaseapp.com/">开始游戏 <span>→</span></a></div><div class="game-art snake-art" aria-hidden="true"><span class="card-snake">🐍</span><span class="card-apple">🍎</span><i>✦</i></div></article>
+        <article class="card game-card game-2048" data-game="2048"><div class="game-copy"><span class="pill">2048 · 数字益智</span><h3>数字合合乐</h3><p>滑一滑，合并数字，拼出新的纪录。</p><a class="play" href="games/2048/index.html">开始游戏 <span>→</span></a></div><div class="game-art number-art" aria-hidden="true"><i>2</i><i>4</i><i>8</i><i>16</i></div></article>
+        <article class="card game-card game-memory" data-game="memory"><div class="game-copy"><span class="pill">记忆挑战</span><h3>记忆方格</h3><p>记住亮格，再把它们一个个找出来。</p><a class="play" href="games/memory/index.html">开始游戏 <span>→</span></a></div><div class="game-art memory-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="card game-card game-breakout" data-game="breakout"><div class="game-copy"><span class="pill">反应挑战</span><h3>打砖块</h3><p>接住小球，打掉彩色砖块，闯下一关。</p><a class="play" href="games/breakout/index.html">开始游戏 <span>→</span></a></div><div class="game-art brick-art" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
       </div>
       <div id="game-empty" class="game-empty card" hidden><p></p><button id="reset-games" type="button">看看全部游戏</button></div>
     </section>
     <section class="section" id="creative">
-      <div class="section-head"><div><div class="kicker">CREATE / 动手画一画</div><h2>创作角</h2></div><div class="section-note">给脑袋里的点子涂上颜色</div></div>
-      <div class="module-grid"><article class="card module-card"><div class="module-icon" aria-hidden="true">🎨</div><div><h3>我的小画板</h3><p>拿起画笔，选喜欢的颜色，加上可爱贴纸。画好了，可以存进小相册，也可以保存成图片。</p><a class="play" href="draw/index.html">去画画 <span>→</span></a></div></article><article class="card module-card"><div class="module-icon" aria-hidden="true" style="background:#dce9f8">🧩</div><div><h3>积木小路线</h3><p>拼好方向积木，让小蛇找到苹果。走直线、转弯、爬楼梯，“重复”积木也来帮忙！</p><a class="play" href="create/route/index.html">去拼积木 <span>→</span></a></div></article></div>
+      <div class="section-head"><div><span class="kicker">把点子变成作品</span><h2>创作角</h2></div><span class="section-note">今天，想做点什么？</span></div>
+      <div class="module-grid"><article class="card module-card"><div class="module-icon" aria-hidden="true">🎨</div><div><h3>我的小画板</h3><p>选颜色、画线条，贴上可爱的贴纸。画好了，收进你的小相册。</p><a class="play" href="draw/index.html">去画画 <span>→</span></a></div></article><article class="card module-card"><div class="module-icon blocks-icon" aria-hidden="true">🧩</div><div><h3>积木小路线</h3><p>拼好方向和重复积木，让小蛇照着走。三条小路线，等你来挑战。</p><a class="play" href="create/route/index.html">去拼积木 <span>→</span></a></div></article></div>
     </section>
+    <div class="discovery-grid">
     <section class="section" id="album">
-      <div class="section-head"><div><div class="kicker">ALBUM / 留住小瞬间</div><h2>小相册</h2></div><a class="section-link" href="album/index.html">打开相册 →</a></div>
+      <div class="section-head"><div><span class="kicker">留住小小的精彩</span><h2>小相册</h2></div><a class="section-link" href="album/index.html">我的画作与截图 <span aria-hidden="true">↗</span></a></div>
       <div class="photo-grid" id="home-gallery">
         <figure class="photo-card"><a href="album/images/snake.png" data-pswp-width="960" data-pswp-height="720"><img src="album/images/snake.png" width="960" height="720" alt="水果贪吃蛇的绿色花园游戏画面" loading="lazy"><figcaption>水果花园</figcaption></a></figure>
         <figure class="photo-card"><a href="album/images/2048.png" data-pswp-width="960" data-pswp-height="720"><img src="album/images/2048.png" width="960" height="720" alt="2048 数字合合乐游戏画面" loading="lazy"><figcaption>数字合合乐</figcaption></a></figure>
@@ -68,11 +70,12 @@
       </div>
     </section>
     <section class="section" id="talk">
-      <div class="section-head"><div><div class="kicker">TALK / 随便聊聊</div><h2>闲聊</h2></div><div class="section-note">生活、想法和有趣发现</div></div>
-      <div class="talk-grid"><article class="card talk-card"><div class="talk-content"><time>置顶 · 欢迎</time><h3>你好，欢迎来到我的小站</h3><p>小游戏、小画作，还有突然冒出来的想法，都能在这里找到一个小角落。</p><a class="section-link talk-tip" href="articles/welcome.html">读一读 →</a></div></article><article class="card talk-card"><div class="talk-content"><time>2026.10.04 · 小站更新</time><h3>小站的小角落连起来啦</h3><p>收藏喜欢的游戏，把画作收进相册，再拼一条让小蛇找到苹果的积木路线。</p><a class="section-link talk-tip" href="articles/small-connections.html">看看有什么新鲜事 →</a></div></article></div>
+      <div class="section-head"><div><span class="kicker">想法与有趣发现</span><h2>闲聊</h2></div><span class="section-note">慢慢记录，慢慢长大</span></div>
+      <div class="talk-grid"><article class="card talk-card"><div class="talk-content"><time>置顶 · 欢迎</time><h3>你好，欢迎来到我的小站</h3><p>小游戏、小画作和突然冒出来的想法，都有自己的小角落。</p><a class="section-link talk-tip" href="articles/welcome.html">读一读 →</a></div></article><article class="card talk-card"><div class="talk-content"><time>2026.10.04 · 小站更新</time><h3>小站的小角落连起来啦</h3><p>收藏、画板和相册连起来了，还有新的积木小路线。</p><a class="section-link talk-tip" href="articles/small-connections.html">看看有什么新鲜事 →</a></div></article></div>
     </section>
+    </div>
   </main>
-  <footer><div class="wrap footer-row site-foot"><span>Dyson的小小空间<a href="credits.html">开源伙伴</a></span><span>用一点好奇心和<span class="heart">♥</span>慢慢搭建</span></div></footer>
+  <footer class="site-footer"><div class="wrap footer-row"><div><strong>Dyson的小小空间 <span aria-hidden="true">✦</span></strong><p>用一点好奇心，慢慢搭建。</p></div><div class="footer-links"><a href="#games">再玩一会儿</a><a href="credits.html">开源伙伴</a><span>慢慢更新，开心就好。</span></div></div></footer>
   <script src="assets/vendor/photoswipe/photoswipe.umd.min.js"></script>
   <script src="assets/vendor/photoswipe/photoswipe-lightbox.umd.min.js"></script>
   <script src="assets/gallery.js"></script>
