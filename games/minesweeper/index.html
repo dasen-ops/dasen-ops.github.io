@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f6f6ee">
+  <title>花园扫雷 · Dyson的小小空间</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/shared.css">
+  <link rel="stylesheet" href="../../assets/site-nav.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../../assets/site-core.js?v=20261005-puzzles" data-game="minesweeper" defer></script>
+  <script src="../../assets/site-nav.js?v=20261005-puzzles" defer></script>
+  <script src="../../assets/vendor/canvas-confetti/confetti.browser.js" defer></script>
+  <script src="../../assets/celebrate.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body data-site-section="games">
+  <main class="page-shell minesweeper-page">
+    <a class="back-link" href="../../index.html#games">← 返回首页</a>
+    <header class="page-head">
+      <span class="eyebrow">慢慢想，找出安全的小路</span>
+      <h1>花园扫雷 <span aria-hidden="true">✿</span></h1>
+      <p>草地下面藏着几块小石头。看看数字，把所有安全的格子翻开吧！</p>
+    </header>
+
+    <section class="garden-settings" aria-label="选择花园大小">
+      <div class="difficulty-picker" role="group" aria-label="花园难度">
+        <button class="btn" data-difficulty="easy" type="button" aria-pressed="true">入门 · 6 × 6</button>
+        <button class="btn" data-difficulty="hard" type="button" aria-pressed="false">挑战 · 8 × 8</button>
+      </div>
+      <button class="btn" id="new-garden" type="button">↻ 重新开始</button>
+    </section>
+
+    <div class="garden-layout">
+      <section class="garden-play" aria-label="花园棋盘">
+        <div class="garden-toolbar">
+          <div class="mode-picker" role="group" aria-label="选择格子操作">
+            <button class="btn primary" id="mode-reveal" data-mode="reveal" type="button" aria-pressed="true">✿ 翻开</button>
+            <button class="btn" id="mode-flag" data-mode="flag" type="button" aria-pressed="false">⚑ 标记</button>
+          </div>
+          <span id="mode-hint" class="mode-hint">点格子，看看下面是什么</span>
+        </div>
+        <div class="garden-counters" aria-label="这一局的进度">
+          <p>小石头 <strong id="rock-count">5</strong></p>
+          <p>已标小旗 <strong id="flag-count">0</strong></p>
+          <p>安全格 <strong id="safe-count">0 / 31</strong></p>
+        </div>
+        <div class="board-window" id="board-window">
+          <div id="mine-board" class="mine-board" role="grid" aria-label="花园棋盘" aria-describedby="keyboard-help board-scroll-tip" data-phase="ready"></div>
+        </div>
+        <p id="board-scroll-tip" class="board-scroll-tip" hidden>挑战花园更宽，可以左右滑动棋盘。每个格子都能轻松点到。</p>
+        <p id="garden-status" class="garden-status" role="status" aria-live="polite">挑一格翻开吧，第一格和它周围都安全。</p>
+        <p class="keyboard-help" id="keyboard-help">键盘：方向键选格，回车或空格操作；F 键放下或收起小旗。</p>
+      </section>
+
+      <aside class="garden-notes" aria-label="怎么玩">
+        <section class="panel rule-card">
+          <h2>数字会告诉你</h2>
+          <div class="number-example" aria-hidden="true"><span class="example-number">1</span><span class="example-arrow">→</span><span class="example-rock"></span></div>
+          <p><strong>数字 1</strong> 表示它周围的 8 个格子里，藏着 <strong>1 块石头</strong>，斜着的格子也算。</p>
+          <p>觉得某格藏着石头？切到<strong>“标记”</strong>放一面小旗，再点一次就收起来。</p>
+          <p>没有数字的空地会自动展开。翻开全部安全格，花园就整理好了。</p>
+          <p class="friendly-note">碰到石头也没关系，再开一局慢慢想。</p>
+        </section>
+        <section class="garden-record" aria-label="本机完成记录"><span aria-hidden="true">✿</span><div><p>整理好的花园</p><strong><span id="garden-wins">0</span> 次</strong></div></section>
+      </aside>
+    </div>
+    <p id="storage-note" class="storage-note">完成次数只记在这台设备的浏览器里。刷新会准备新的一局。</p>
+    <footer class="page-footer">扫雷规则改编自 <a href="https://github.com/KilledByAPixel/LittleJSArcade" target="_blank" rel="noopener noreferrer">LittleJS Arcade</a> · <a href="LICENSE">MIT 开源许可</a></footer>
+    <noscript><p>请允许浏览器运行 JavaScript，就可以开始翻开花园。</p></noscript>
+  </main>
+</body>
+</html>

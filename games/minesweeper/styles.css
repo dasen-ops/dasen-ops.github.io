@@ -1,0 +1,59 @@
+.minesweeper-page{max-width:980px}
+.eyebrow{display:block;margin-bottom:10px;color:var(--muted);font-size:12px;letter-spacing:.08em}
+.page-head h1 span{color:#7f9b68}
+.garden-settings{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px}
+.difficulty-picker,.mode-picker{display:flex;gap:8px;flex-wrap:wrap}
+.difficulty-picker [aria-pressed="true"]{border-color:#315d49;background:#e7eee3;color:#315d49}
+.garden-layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(250px,.8fr);gap:24px;align-items:start}
+.garden-play{min-width:0;padding:22px;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:0 8px 28px #263f3506}
+.garden-toolbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.mode-picker .btn{min-width:92px}
+.mode-hint{color:var(--muted);font-size:12px;line-height:1.6}
+.garden-counters{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:20px 0 16px}
+.garden-counters p{display:flex;align-items:baseline;gap:7px;margin:0;color:var(--muted);font-size:12px;line-height:1.6}
+.garden-counters strong{color:var(--ink);font-size:16px;font-variant-numeric:tabular-nums}
+.board-window{max-width:100%;overflow-x:auto;padding:5px;border:1px solid #cedcc3;border-radius:14px;background:#e4ebdd;overscroll-behavior-x:contain;touch-action:pan-x pan-y;scrollbar-width:thin;scrollbar-color:#96ad82 #e4ebdd}
+.mine-board{min-width:calc(var(--columns) * 44px + (var(--columns) - 1) * 4px);display:grid;gap:4px;outline:none}
+.mine-row{display:grid;grid-template-columns:repeat(var(--columns),minmax(44px,1fr));gap:4px}
+.garden-cell{display:grid;place-items:center;position:relative;aspect-ratio:1;min-width:44px;min-height:44px;padding:0;border:1px solid #829e6d;border-radius:7px;background:#a6bf8d;color:#244238;box-shadow:inset 0 -3px 0 #7f9c6540;font-size:clamp(18px,2.6vw,25px);font-weight:800;line-height:1;user-select:none;transition:background .1s}
+.garden-cell:hover{filter:brightness(1.03)}
+.garden-cell.is-revealed{border-color:#dce3d4;background:#fffef5;box-shadow:none;cursor:default}
+.garden-cell.is-empty{color:#8da279}
+.garden-cell.is-empty:after{content:"✿";font-size:15px;opacity:.6}
+.garden-cell[data-number="1"]{color:#326387}
+.garden-cell[data-number="2"]{color:#39734d}
+.garden-cell[data-number="3"]{color:#a65942}
+.garden-cell[data-number="4"]{color:#74568d}
+.garden-cell[data-number="5"],.garden-cell[data-number="6"],.garden-cell[data-number="7"],.garden-cell[data-number="8"]{color:#77522f}
+.garden-cell.is-flagged{background:#f6e9bd;border-color:#c3a965;box-shadow:inset 0 -3px 0 #a18a4930}
+.flag-icon{position:relative;width:22px;height:27px;display:block;border-left:3px solid #5c663a;margin-left:6px}
+.flag-icon:before{content:"";position:absolute;top:1px;left:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:14px solid #bc733b}
+.flag-icon:after{content:"";position:absolute;bottom:-1px;left:-8px;width:15px;height:3px;border-radius:2px;background:#5c663a}
+.garden-cell.is-rock{background:#f2e3d9;border-color:#d5b6a2;box-shadow:none}
+.garden-cell.is-hit{border:2px solid #a76347;background:#efd7c5}
+.stone-shape,.example-rock{display:block;width:26px;height:21px;border:2px solid #718075;border-radius:52% 42% 35% 38%;background:#a7b0a5;box-shadow:inset -5px -3px 0 #8c988d,2px 2px 0 #263f3512;transform:rotate(-8deg)}
+.garden-cell.is-wrong{background:#f3e0d6;color:#94593f;border-color:#cda98f}
+.garden-cell[aria-disabled="true"]{cursor:default}
+.garden-cell:focus-visible{z-index:1;outline:3px solid #a07829;outline-offset:1px}
+.board-scroll-tip{margin:10px 0 0;color:var(--muted);font-size:12px;line-height:1.75}
+.garden-status{min-height:52px;margin:18px 0 0;color:var(--green);font-size:14px;line-height:1.8;font-weight:700}
+.garden-status[data-result="won"]{color:#315d49}
+.garden-status[data-result="lost"]{color:#875338}
+.keyboard-help{margin:12px 0 0;color:var(--muted);font-size:12px;line-height:1.8}
+.garden-notes{display:grid;gap:18px}
+.rule-card{padding:22px;background:#fff}
+.rule-card h2{margin:0;font-size:18px}
+.rule-card p{margin:14px 0 0;color:var(--muted);font-size:13px;line-height:1.85}
+.rule-card strong{color:var(--ink)}
+.number-example{display:flex;align-items:center;gap:16px;margin-top:20px}
+.example-number{display:grid;place-items:center;width:44px;height:44px;border:1px solid var(--line);border-radius:8px;background:#fffef5;color:#326387;font-size:25px;font-weight:800}
+.example-arrow{color:#93a38a}
+.rule-card .friendly-note{padding-top:15px;border-top:1px solid var(--line);font-size:12px}
+.garden-record{display:flex;align-items:center;gap:16px;padding:20px 22px;border:1px solid var(--line);border-radius:24px;background:#eaf0e4}
+.garden-record>span{font-size:36px;color:#6d895a}
+.garden-record p{margin:0 0 3px;color:var(--muted);font-size:12px}
+.garden-record strong{font-size:24px;line-height:1.4;overflow-wrap:anywhere}
+.storage-note{margin:22px 0 0;color:var(--muted);font-size:12px;line-height:1.85}
+@media(max-width:800px){.garden-layout{grid-template-columns:minmax(0,1fr)}.garden-play{padding:20px;max-width:580px;width:100%;margin:auto}.garden-notes{grid-template-columns:minmax(0,1fr) minmax(180px,.6fr);align-items:start}.garden-record{padding:20px}.garden-settings{gap:10px}.garden-cell{font-size:22px}}
+@media(max-width:600px){.garden-settings{align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}.garden-settings .btn{padding:10px 12px;font-size:12px}.garden-play{padding:16px 0;border:0;border-radius:0;background:transparent;box-shadow:none}.garden-toolbar,.garden-counters,.garden-status,.keyboard-help,.board-scroll-tip{padding-left:2px;padding-right:2px}.garden-toolbar{gap:10px}.mode-picker .btn{min-width:94px;padding:10px 14px}.mode-hint{font-size:12px}.garden-counters{margin-top:17px;margin-bottom:14px}.garden-counters p{font-size:11px;gap:5px}.garden-counters strong{font-size:15px}.garden-cell{font-size:21px}.garden-status{margin-top:16px;min-height:48px;font-size:13px}.garden-notes{grid-template-columns:minmax(0,1fr);gap:14px}.rule-card{padding:20px}.rule-card p{font-size:13px}.garden-record{padding:16px 20px}.garden-record strong{font-size:22px}.keyboard-help{font-size:11px}.storage-note{margin-top:18px}}
+@media(prefers-reduced-motion:reduce){.garden-cell{transition:none}}

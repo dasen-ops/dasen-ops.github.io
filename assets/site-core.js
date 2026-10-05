@@ -9,9 +9,16 @@
     { id: 'memory', name: '记忆方格', icon: '🟦', href: 'games/memory/index.html', keywords: '记忆 方格 眼力 益智 memory' },
     { id: 'breakout', name: '打砖块', icon: '🧱', href: 'games/breakout/index.html', keywords: '打砖块 弹球 反应 breakout' },
     { id: 'sokoban', name: '推箱子', icon: '📦', href: 'games/sokoban/index.html', keywords: '推箱子 箱子 解谜 关卡 sokoban' },
-    { id: 'connect4', name: '四子棋', icon: '🔴', href: 'games/connect4/index.html', keywords: '四子棋 棋盘 双人 电脑 连线 connect4' }
+    { id: 'connect4', name: '四子棋', icon: '🔴', href: 'games/connect4/index.html', keywords: '四子棋 棋盘 双人 电脑 连线 connect4' },
+    { id: 'sliding', name: '数字滑块', icon: '🧩', href: 'games/sliding/index.html', keywords: '数字 滑块 拼图 排序 益智 sliding puzzle' },
+    { id: 'sudoku', name: '小小数独', icon: '✏️', href: 'games/sudoku/index.html', keywords: '数独 数字 推理 逻辑 益智 sudoku' },
+    { id: 'minesweeper', name: '花园扫雷', icon: '🌱', href: 'games/minesweeper/index.html', keywords: '花园 扫雷 石头 数字 推理 标记 益智 minesweeper' }
   ];
   const key = 'dyson-site-v1';
+  const recordKeys = new Set(['xingya.2048.bestScore', 'dyson-breakout-best',
+    'xingya.memory.best.easy', 'xingya.memory.best.normal', 'xingya.memory.best.hard',
+    'dyson-sokoban-v1', 'dyson-connect4-v1', 'dyson-sliding-v1',
+    'dyson-sudoku-v1', 'dyson-minesweeper-v1']);
   const validId = id => games.some(game => game.id === id);
   const empty = () => ({ version: 1, favorites: [], recent: [] });
   let state = empty();
@@ -61,6 +68,13 @@
   };
   const gameRecord = id => {
     if (id === 'snake') return '在线花园 · 含排行榜';
+    if (['sliding', 'sudoku', 'minesweeper'].includes(id)) {
+      try {
+        const saved = JSON.parse(localStorage.getItem('dyson-' + id + '-v1'));
+        const wins = saved?.version === 1 ? saved.wins : 0;
+        return Number.isSafeInteger(wins) && wins > 0 ? '已完成：' + wins + ' 局' : '';
+      } catch { return ''; }
+    }
     if (id === 'sokoban') {
       try {
         const saved = JSON.parse(localStorage.getItem('dyson-sokoban-v1'));
@@ -108,6 +122,7 @@
   });
   window.addEventListener('storage', event => {
     if (event.key === key || event.key === null) { state = read(); emit(true); }
+    else if (recordKeys.has(event.key)) emit(true);
   });
   window.addEventListener('pageshow', event => {
     if (event.persisted) { state = read(); emit(true); }

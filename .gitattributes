@@ -1,0 +1,2 @@
+# Preserve the downloaded upstream source exactly, including its CRLF endings.
+games/sliding/source-play.txt -text

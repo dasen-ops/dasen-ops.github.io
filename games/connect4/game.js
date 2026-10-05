@@ -157,7 +157,9 @@
     else if (!columns[selectedColumn].button.disabled) columns[selectedColumn].button.focus({ preventScroll: true });
   }
   function scheduleAI() {
-    if (away || state.gameOver || record.mode !== 'ai' || state.currentPlayer !== YELLOW) return;
+    // Restoring a page can fire both pageshow and visibilitychange.
+    // Keep a single search for the current turn even when resume runs twice.
+    if (busy || away || state.gameOver || record.mode !== 'ai' || state.currentPlayer !== YELLOW) return;
     busy = true;
     const ticket = generation;
     const controller = new AbortController();

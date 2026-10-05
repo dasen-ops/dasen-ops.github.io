@@ -1,0 +1,130 @@
+{
+  "total": 30,
+  "levels": {
+    "easy": 10,
+    "normal": 10,
+    "hard": 10
+  },
+  "solutions": [
+    {
+      "id": "easy-01",
+      "count": 1
+    },
+    {
+      "id": "easy-02",
+      "count": 1
+    },
+    {
+      "id": "easy-03",
+      "count": 1
+    },
+    {
+      "id": "easy-04",
+      "count": 1
+    },
+    {
+      "id": "easy-05",
+      "count": 1
+    },
+    {
+      "id": "easy-06",
+      "count": 1
+    },
+    {
+      "id": "easy-07",
+      "count": 1
+    },
+    {
+      "id": "easy-08",
+      "count": 1
+    },
+    {
+      "id": "easy-09",
+      "count": 1
+    },
+    {
+      "id": "easy-10",
+      "count": 1
+    },
+    {
+      "id": "normal-01",
+      "count": 1
+    },
+    {
+      "id": "normal-02",
+      "count": 1
+    },
+    {
+      "id": "normal-03",
+      "count": 1
+    },
+    {
+      "id": "normal-04",
+      "count": 1
+    },
+    {
+      "id": "normal-05",
+      "count": 1
+    },
+    {
+      "id": "normal-06",
+      "count": 1
+    },
+    {
+      "id": "normal-07",
+      "count": 1
+    },
+    {
+      "id": "normal-08",
+      "count": 1
+    },
+    {
+      "id": "normal-09",
+      "count": 1
+    },
+    {
+      "id": "normal-10",
+      "count": 1
+    },
+    {
+      "id": "hard-01",
+      "count": 1
+    },
+    {
+      "id": "hard-02",
+      "count": 1
+    },
+    {
+      "id": "hard-03",
+      "count": 1
+    },
+    {
+      "id": "hard-04",
+      "count": 1
+    },
+    {
+      "id": "hard-05",
+      "count": 1
+    },
+    {
+      "id": "hard-06",
+      "count": 1
+    },
+    {
+      "id": "hard-07",
+      "count": 1
+    },
+    {
+      "id": "hard-08",
+      "count": 1
+    },
+    {
+      "id": "hard-09",
+      "count": 1
+    },
+    {
+      "id": "hard-10",
+      "count": 1
+    }
+  ]
+}

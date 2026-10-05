@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f6ee">
+  <title>数字滑块 · Dyson的小小空间</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/shared.css">
+  <link rel="stylesheet" href="../../assets/site-nav.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../../assets/site-core.js?v=20261005-puzzles" data-game="sliding" defer></script>
+  <script src="../../assets/site-nav.js?v=20261005-puzzles" defer></script>
+  <script src="../../assets/vendor/canvas-confetti/confetti.browser.js" defer></script>
+  <script src="../../assets/celebrate.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body data-site-section="games">
+  <main class="sliding-page">
+    <a class="back-link" href="../../index.html#games">← 返回首页</a>
+    <header class="game-heading">
+      <span class="eyebrow">挪一挪 · 排好小数字</span>
+      <h1>数字滑块</h1>
+      <p>点空格旁边的数字，把它滑进去。按 1 到 8 排好，空格留在右下角！</p>
+    </header>
+    <div class="difficulty-picker" aria-label="选择数字滑块难度">
+      <button type="button" class="btn" data-difficulty="easy" aria-pressed="true">入门</button>
+      <button type="button" class="btn" data-difficulty="hard" aria-pressed="false">挑战</button>
+    </div>
+    <section class="play-panel" aria-label="数字滑块游戏">
+      <div class="score-strip">
+        <div><span>这一题</span><strong id="move-count">0</strong><small>步</small></div>
+        <div><span>这个难度最佳</span><strong id="best-moves">—</strong><small id="best-unit"></small></div>
+        <div><span>已完成</span><strong id="wins">0</strong><small>题</small></div>
+      </div>
+      <p id="game-status" class="game-status" role="status" aria-live="polite">点空格旁边的数字，试着挪一挪。</p>
+      <div id="board" class="sliding-board game-container" tabindex="0" role="group" aria-label="数字滑块棋盘，方向键移动空格"></div>
+      <div class="game-actions">
+        <button type="button" id="undo-button" class="btn" disabled>撤销一步</button>
+        <button type="button" id="restart-button" class="btn">重来同题</button>
+        <button type="button" id="new-button" class="btn primary">换一题</button>
+      </div>
+      <p class="board-tip">亮边的数字可以移动。电脑用方向键移动空格；Z 撤销，R 重来。</p>
+    </section>
+    <p id="storage-note" class="storage-note">完成记录留在这个浏览器里，刷新后可以接着玩。换难度会换一题。</p>
+    <footer class="page-footer">规则改编自 Iditri Datta 的 <a href="https://github.com/iditri08/8PuzzleGame" target="_blank" rel="noopener noreferrer">8 Puzzle Game</a> · <a href="LICENSE">MIT 开源许可</a></footer>
+  </main>
+</body>
+</html>

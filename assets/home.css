@@ -113,6 +113,16 @@ h1 em { color: var(--green); font-style: normal; }
 .connect-art i { height: 18px; border-radius: 50%; background: #fffefa; }
 .connect-art i:nth-child(6), .connect-art i:nth-child(9), .connect-art i:nth-child(11) { background: #c87989; }
 .connect-art i:nth-child(8), .connect-art i:nth-child(10), .connect-art i:nth-child(12) { background: #eacb7c; }
+.sliding-art, .sudoku-art, .garden-art { grid-template-columns: repeat(3,24px); gap: 5px; }
+.sliding-art { background: #efe4d5; }
+.sliding-art i, .sudoku-art i, .garden-art i { display: grid; place-items: center; height: 24px; border-radius: 5px; font-size: 15px; font-style: normal; font-weight: 700; }
+.sliding-art i { color: #725730; background: #eacb7c; box-shadow: 0 2px 0 #c9a35d; }
+.sliding-art .blank { background: #ddd1bc; box-shadow: none; }
+.sudoku-art { background: #e9e5ef; gap: 2px; }
+.sudoku-art i { background: #fffefa; color: #786595; border-radius: 2px; }
+.garden-art { background: #e2ecd9; }
+.garden-art i { background: #9fb986; color: #fffefa; box-shadow: 0 2px 0 #829e68; }
+.garden-art .open { background: #f7f8ee; color: #52734b; box-shadow: none; }
 .game-copy { display: flex; flex-direction: column; flex: 1; min-width: 0; padding: 15px 9px 7px; }
 .game-badge-row { min-height: 18px; display: flex; align-items: center; }
 .pill { font-size: 10px; font-weight: 700; color: #71815e; letter-spacing: .02em; }
@@ -199,6 +209,9 @@ h1 em { color: var(--green); font-style: normal; }
   .sokoban-art .player { font-size: 16px; }
   .connect-art { grid-template-columns: repeat(4,14px); gap: 4px; }
   .connect-art i { height: 14px; }
+  .sliding-art, .sudoku-art, .garden-art { grid-template-columns: repeat(3,18px); gap: 4px; }
+  .sliding-art i, .sudoku-art i, .garden-art i { height: 18px; font-size: 12px; }
+  .sudoku-art { gap: 2px; }
   .module-grid { grid-template-columns: 1fr; }
   .module-card { padding: 22px; }
   .module-icon { width: 90px; height: 95px; font-size: 43px; }

@@ -89,8 +89,11 @@
     }
     stroke.last = point; layer.batchDraw();
   }
-  function finishStroke() {
+  function finishStroke(event) {
     if (!stroke) return;
+    const nativeEvent = event && (event.evt || event);
+    // A second finger can lift while the drawing finger is still moving.
+    if (nativeEvent && nativeEvent.pointerId !== undefined && nativeEvent.pointerId !== stroke.id) return;
     const before = stroke.before; stroke = null;
     if (!same(before,snapshot())) { pushUndo(before); updateTools(); scheduleSave(); }
   }

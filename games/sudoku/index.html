@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#315d49">
+  <title>小小数独 · Dyson的小小空间</title>
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/shared.css">
+  <link rel="stylesheet" href="../../assets/site-nav.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="../../assets/site-core.js?v=20261005-puzzles" data-game="sudoku" defer></script>
+  <script src="../../assets/site-nav.js?v=20261005-puzzles" defer></script>
+  <script src="sudoku.js" defer></script>
+  <script src="puzzles.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body data-site-section="games">
+  <main class="sudoku-page">
+    <a class="back-link" href="../../index.html#games">← 返回首页</a>
+    <header class="page-head">
+      <span class="eyebrow">慢慢想，也可以用一点提示</span>
+      <h1>小小数独</h1>
+      <p>每行、每列、每个粗线围住的九宫格，都要填上不重复的 1–9。</p>
+    </header>
+    <section class="game-settings" aria-label="选择题目">
+      <div class="level-picker" aria-label="选择难度">
+        <button type="button" class="btn" data-level="easy" aria-pressed="true">入门</button>
+        <button type="button" class="btn" data-level="normal" aria-pressed="false">普通</button>
+        <button type="button" class="btn" data-level="hard" aria-pressed="false">挑战</button>
+      </div>
+      <div class="puzzle-actions">
+        <button type="button" class="btn" id="restart">这题重来</button>
+        <button type="button" class="btn primary" id="new-puzzle">换一道新题</button>
+      </div>
+    </section>
+    <p id="game-status" class="game-status" role="status" aria-live="polite">先点一个空格，再选下面的数字。</p>
+    <section class="play-layout" aria-label="数独游戏">
+      <div class="board-area">
+        <div id="sudoku-board" class="sudoku-board" role="group" aria-label="九行九列数独棋盘" aria-describedby="keyboard-help"></div>
+        <p id="keyboard-help" class="keyboard-help">键盘：方向键选格，1–9 填数字，退格清空，Ctrl+Z 撤销。</p>
+      </div>
+      <aside class="input-panel" aria-label="填写数字">
+        <p id="selected-cell" class="selected-cell">先选一个格子</p>
+        <div class="number-pad" aria-label="数字键盘">
+          <button type="button" data-digit="1">1</button><button type="button" data-digit="2">2</button><button type="button" data-digit="3">3</button>
+          <button type="button" data-digit="4">4</button><button type="button" data-digit="5">5</button><button type="button" data-digit="6">6</button>
+          <button type="button" data-digit="7">7</button><button type="button" data-digit="8">8</button><button type="button" data-digit="9">9</button>
+        </div>
+        <div class="edit-actions">
+          <button type="button" class="btn" id="erase">清空这格</button>
+          <button type="button" class="btn" id="undo">↶ 撤销</button>
+          <button type="button" class="btn" id="hint">一点提示</button>
+        </div>
+        <p class="gentle-note">深色数字是题目，不能改。填过的数字随时可以清空或撤销。</p>
+        <div class="completion-card"><span>我已经完成</span><strong><span id="win-count">0</span><small> 道</small></strong></div>
+      </aside>
+    </section>
+    <p id="save-status" class="save-status" role="status">这题的进度保存在当前浏览器里，回来还能接着填。</p>
+    <footer class="page-footer">数独生成与候选数逻辑来自 <a href="https://github.com/robatron/sudoku.js" target="_blank" rel="noopener noreferrer">Sudoku.js</a> · <a href="LICENSE">MIT 开源许可</a></footer>
+  </main>
+</body>
+</html>

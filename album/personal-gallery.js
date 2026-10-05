@@ -48,7 +48,10 @@
     const title = document.createElement('span');
     title.textContent = artwork.name;
     const date = document.createElement('small');
-    date.textContent = `${dateFormatter.format(new Date(artwork.createdAt))} · 这台设备上的作品`;
+    const createdAt = new Date(artwork.createdAt);
+    date.textContent = Number.isFinite(createdAt.getTime())
+      ? `${dateFormatter.format(createdAt)} · 这台设备上的作品`
+      : '这台设备上的作品 · 保存时间暂时未知';
     caption.append(title, date);
     link.append(image, caption);
     const removeButton = document.createElement('button');

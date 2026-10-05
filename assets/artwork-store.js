@@ -14,7 +14,9 @@
   }
 
   function storageError(error) {
-    if (error && error.code) return error;
+    // Our friendly errors use string codes. Native DOMException also has a
+    // legacy numeric code (including 22 for quota), which must be translated.
+    if (error && typeof error.code === 'string') return error;
     if (error && error.name === 'QuotaExceededError') {
       return friendlyError('这台设备的存储空间不够啦。先下载图片，再到相册删除不需要的作品。', 'QUOTA');
     }

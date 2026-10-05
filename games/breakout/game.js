@@ -130,8 +130,17 @@ siteStage.addEventListener('pointermove', sitePointerMove);
 function sitePointerEnd(event) { if (siteStage.hasPointerCapture(event.pointerId)) siteStage.releasePointerCapture(event.pointerId); }
 siteStage.addEventListener('pointerup', sitePointerEnd);
 siteStage.addEventListener('pointercancel', sitePointerEnd);
+function siteKeyboardAllowed(target = document.activeElement)
+{
+    if (document.hidden) return false;
+    if (!target?.closest) return true;
+    if (target.closest('a,input,textarea,select,[contenteditable="true"],[role="button"]')) return false;
+    // The game's own action buttons keep their keyboard shortcuts; header and
+    // navigation buttons retain ordinary focus behavior.
+    return !target.closest('button') || Boolean(target.closest('.game-controls'));
+}
 document.addEventListener('keydown', event => {
-    if (!siteReady || event.target.closest('input,textarea,select')) return;
+    if (!siteReady || event.altKey || event.ctrlKey || event.metaKey || !siteKeyboardAllowed(event.target)) return;
     if (['ArrowLeft','ArrowRight','KeyA','KeyD'].includes(event.code))
     {
         if (siteStarted) event.preventDefault();
@@ -842,7 +851,7 @@ function gameUpdate()
 
     // paddle controls (keyboard/gamepad overrides mouse)
     // gamepad: merge left stick into keyDirection, then read the x axis
-    let move = keyDirection();
+    let move = siteKeyboardAllowed() ? keyDirection() : vec2();
     const stick = gamepadStick(0);
     if (stick.lengthSquared() > .04) move = move.add(stick);
     if (move.lengthSquared() > 1) move = move.normalize(1);

@@ -72,7 +72,6 @@
       favorite.type = 'button';
       favorite.className = 'site-nav__favorite';
       favorite.dataset.siteFavorite = game;
-      let lastTouchActivation = -Infinity;
       function returnPointerFocus() {
         const board = main.querySelector('.game-container[tabindex]');
         if (board) board.focus({ preventScroll: true });
@@ -89,20 +88,13 @@
         if (result && result.persisted === false) favorite.title = '本次可以收藏；浏览器未允许保存，关闭后可能不会保留。';
         if (pointerActivation) returnPointerFocus();
       }
-      favorite.addEventListener('pointerup', function (event) {
-        if (event.pointerType !== 'touch') return;
-        const bounds = favorite.getBoundingClientRect();
-        if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) return;
-        lastTouchActivation = performance.now();
-        event.preventDefault();
-        activateFavorite(true);
+      site.onActivate(favorite, function (event) {
+        activateFavorite(event.type === 'pointerup' || event.detail > 0);
       });
+      // A compatibility mouse event can focus the button again after pointerup.
+      // Restore the board focus even when onActivate deduplicates that click.
       favorite.addEventListener('click', function (event) {
-        if (event.detail > 0 && performance.now() - lastTouchActivation < 700) {
-          returnPointerFocus();
-          return;
-        }
-        activateFavorite(event.detail > 0);
+        if (event.detail > 0) returnPointerFocus();
       });
       window.addEventListener('dyson-site-change', updateFavorite);
       updateFavorite();

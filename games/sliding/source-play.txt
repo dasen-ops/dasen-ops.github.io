@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>8 Puzzle – Play</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Playfair+Display:wght@900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      background: #f8f4ff;
+      background-image:
+        radial-gradient(ellipse at 15% 15%, #fde8f0 0%, transparent 50%),
+        radial-gradient(ellipse at 85% 85%, #dff6ff 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, #eae8fd 0%, transparent 70%);
+      padding: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.85);
+      border-radius: 30px;
+      border: 2px solid rgba(255,255,255,0.95);
+      box-shadow: 0 24px 64px rgba(160,120,210,0.18), 0 4px 16px rgba(0,0,0,0.07);
+      padding: 28px 32px 32px;
+      text-align: center;
+      width: 380px;
+      max-width: 95vw;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .play-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: #6d3fc8;
+    }
+
+    .btn-home {
+      background: #f0ebff;
+      border: none;
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      color: #7c3aed;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-home:hover { background: #e5deff; }
+
+    /* ── HUD ── */
+    .hud {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f5f2ff, #fce7f5);
+      border-radius: 20px;
+      padding: 12px 20px;
+      margin-bottom: 18px;
+      border: 1.5px solid rgba(196,181,253,0.35);
+    }
+
+    .hud-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+    }
+
+    .hud-emoji { font-size: 16px; }
+
+    .hud-num {
+      font-size: 26px;
+      font-weight: 900;
+      color: #6d3fc8;
+      font-family: 'Playfair Display', serif;
+      line-height: 1;
+    }
+
+    .hud-lbl {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #c4b5fd;
+    }
+
+    .hud-sep {
+      width: 1.5px;
+      height: 44px;
+      background: linear-gradient(to bottom, transparent, #ddd6fe, transparent);
+      margin: 0 16px;
+      flex-shrink: 0;
+    }
+
+    /* ── THE GRID ── */
+    .puzzle-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 96px);
+      grid-template-rows: repeat(3, 96px);
+      gap: 10px;
+      justify-content: center;
+      margin: 0 auto 22px;
+    }
+
+    .tile {
+      width: 96px;
+      height: 96px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: #3a2b6b;
+      cursor: pointer;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.11), inset 0 1px 0 rgba(255,255,255,0.65);
+      transition: transform 0.14s cubic-bezier(.36,1.5,.64,1), box-shadow 0.14s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tile::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 42%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.48), transparent);
+      border-radius: 18px 18px 0 0;
+      pointer-events: none;
+    }
+
+    .tile:hover { transform: scale(1.07) translateY(-3px); box-shadow: 0 10px 22px rgba(0,0,0,0.14); }
+    .tile:active { transform: scale(0.91); }
+
+    .tile.blank {
+      background: transparent !important;
+      border: 2.5px dashed #ddd6fe;
+      box-shadow: none;
+      cursor: default;
+    }
+    .tile.blank:hover { transform: none; }
+    .tile.blank::after { display: none; }
+
+    .tile.slide { animation: slideIn 0.14s ease; }
+
+    /* ── New Puzzle button ── */
+    .btn-new {
+      background: linear-gradient(135deg, #a78bfa, #f472b6);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 13px 36px;
+      font-size: 16px;
+      font-weight: 800;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 7px 20px rgba(167,139,250,0.42);
+      transition: transform 0.16s, box-shadow 0.16s;
+    }
+    .btn-new:hover {
+      transform: scale(1.06) translateY(-2px);
+      box-shadow: 0 12px 28px rgba(167,139,250,0.52);
+    }
+    .btn-new:active { transform: scale(0.95); }
+
+    @keyframes slideIn {
+      0%   { transform: scale(0.84); opacity: 0.5; }
+      100% { transform: scale(1);    opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="topbar">
+      <h2 class="play-title">8 Puzzle</h2>
+      <a href="index.html" class="btn-home">← Home</a>
+    </div>
+
+    <div class="hud">
+      <div class="hud-block">
+        <span class="hud-emoji">🎯</span>
+        <span class="hud-num" id="move-count">0</span>
+        <span class="hud-lbl">Moves</span>
+      </div>
+      <div class="hud-sep"></div>
+      <div class="hud-block">
+        <span class="hud-emoji">⏱</span>
+        <span class="hud-num" id="timer">00:00</span>
+        <span class="hud-lbl">Time</span>
+      </div>
+    </div>
+
+    <div class="puzzle-grid" id="board"></div>
+
+    <button class="btn-new" id="btn-new">🔀 New Puzzle</button>
+  </div>
+
+  <script>
+    const GOAL   = [1,2,3,4,5,6,7,8,0];
+    const COLORS = { 1:'#ffb3c1',2:'#ffd6a5',3:'#fdffb6',4:'#caffbf',5:'#9bf6ff',6:'#bdb2ff',7:'#ffc6ff',8:'#a0c4ff' };
+
+    let tiles=[], moves=0, seconds=0, timerID=null;
+
+    const boardEl = document.getElementById('board');
+    const moveEl  = document.getElementById('move-count');
+    const timeEl  = document.getElementById('timer');
+
+    const fmt = s => `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+
+    function solvable(a){
+      const f=a.filter(x=>x!==0); let c=0;
+      for(let i=0;i<f.length;i++) for(let j=i+1;j<f.length;j++) if(f[i]>f[j]) c++;
+      return c%2===0;
+    }
+
+    function shuffle(){
+      let a;
+      do { a=[...GOAL].sort(()=>Math.random()-0.5); }
+      while(a.join()===GOAL.join() || !solvable(a));
+      return a;
+    }
+
+    function render(){
+      boardEl.innerHTML='';
+      tiles.forEach((n,i)=>{
+        const el=document.createElement('div');
+        el.className='tile'+(n===0?' blank':'');
+        el.textContent=n||'';
+        if(n) el.style.background=COLORS[n];
+        el.addEventListener('click',()=>move(i));
+        boardEl.appendChild(el);
+      });
+    }
+
+    function move(idx){
+      const bi=tiles.indexOf(0);
+      const row=i=>Math.floor(i/3);
+      const ok=idx===bi-3||idx===bi+3||(idx===bi-1&&row(idx)===row(bi))||(idx===bi+1&&row(idx)===row(bi));
+      if(!ok) return;
+      [tiles[bi],tiles[idx]]=[tiles[idx],tiles[bi]];
+      moves++; moveEl.textContent=moves;
+      render();
+      const el=boardEl.children[bi];
+      if(el){ el.classList.add('slide'); el.addEventListener('animationend',()=>el.classList.remove('slide'),{once:true}); }
+      if(tiles.join()===GOAL.join()){
+        clearInterval(timerID);
+        sessionStorage.setItem('winMoves',moves);
+        sessionStorage.setItem('winTime',fmt(seconds));
+        sessionStorage.setItem('winTimeSec',seconds);
+        setTimeout(()=>location.href='win.html',350);
+      }
+    }
+
+    function newGame(){
+      clearInterval(timerID);
+      tiles=shuffle(); moves=0; seconds=0;
+      moveEl.textContent='0'; timeEl.textContent='00:00';
+      render();
+      timerID=setInterval(()=>{ seconds++; timeEl.textContent=fmt(seconds); },1000);
+    }
+
+    document.getElementById('btn-new').addEventListener('click',newGame);
+    newGame();
+  </script>
+</body>
+</html>
